@@ -11,8 +11,8 @@ export class SideNavService {
     debugVar_myId :  number;
     public sideNavList:Map<number,SideNavListDTModel> = new Map<number,SideNavListDTModel>([
             [1, {id:1,name:CONST_VALUES.SIDENAV_ITEMS.HOME,hasSubMenu:false,showSubMenu:false, isEnabled:true}],
-            [3, {id:3,name:CONST_VALUES.SIDENAV_ITEMS.LOGS,hasSubMenu:true,showSubMenu:false, isEnabled: true}],  //(Temp - isEnabled: true should not be on prod) for local testing
-            [4, {id:4,name:CONST_VALUES.SIDENAV_ITEMS.INDEXING,hasSubMenu:false,showSubMenu:false, isEnabled: true}],  //(Temp - isEnabled: true should not be on prod) for local testing
+            [3, {id:3,name:CONST_VALUES.SIDENAV_ITEMS.LOGS,hasSubMenu:true,showSubMenu:false, isEnabled: false}],  //(Temp - isEnabled: true should not be on prod) for local testing
+            [4, {id:4,name:CONST_VALUES.SIDENAV_ITEMS.INDEXING,hasSubMenu:false,showSubMenu:false, isEnabled: false}],  //(Temp - isEnabled: true should not be on prod) for local testing
         ]);
     constructor( ){
         this.debugVar_myId = Math.random()

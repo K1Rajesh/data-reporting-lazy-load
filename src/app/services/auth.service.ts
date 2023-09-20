@@ -15,7 +15,7 @@ export class AuthService{
 
     }
     get isAuthenticated():boolean{
-        return true;//(Temp - should not be on prod) for local testing
+        //return false;//(Temp - should not be on prod) for local testing
         return this._isAuthenticated;
     }
     set isAuthenticated(authVal:boolean){

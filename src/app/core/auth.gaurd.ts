@@ -16,7 +16,7 @@ export class AuthGaurd implements CanActivate{
 
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot ):Observable<boolean>{
-        return of(true);//(Temp - should not be on prod) for local testing
+        //return of(true);//(Temp - should not be on prod) for local testing
         let isAuthenticated:boolean = false;
         return  this.authService.callAuthenticatedApi().
          pipe(
