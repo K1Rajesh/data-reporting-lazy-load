@@ -13,32 +13,14 @@ const routes: Routes = [
       {
         path: 'lig', component: LigComponent,
       },
-      // {
-      //   path:'logs',
-      //   component: LogsComponent,
-      //   children:[
-      //     {
-      //       path: 'ui-log/:sessionId',
-      //       component: UiLogsComponent,
-      //     },
-      //     {
-      //         path : 'Show distinct users',
-      //         component : DistinctUserComponent
-      //     },
-      //     {
-      //       path:'Reports accessed count',
-      //       component: ReportsAccessedCountComponent   
-      //     },
-      //     {
-      //       path:'User Activity Log',
-      //       component: ActivityLogsComponent
-      //     }
-      // ]
-      // },
-      // {
-      //   path: 'indexing',
-      //   component: IndexingReportComponent,
-      // }
+      {
+        path:'logs',
+        loadChildren: () => import('./../logs/logs.module').then(m => m.LogsModule)
+      },
+      {
+        path: 'indexing',
+        loadChildren: () => import('./../misc-dashboards/misc-dashboards.module').then(m => m.MiscDashboardsModule)
+      }
     ]
 
 
