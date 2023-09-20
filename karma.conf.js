@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/basic-lazy-load-data-reporting'),
+      dir: require('path').join(__dirname, './coverage/data-reporting-lazy-load'),
       subdir: '.',
       reporters: [
         { type: 'html' },

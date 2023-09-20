@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "basic-lazy-load-data-reporting": {
+    "data-reporting-lazy-load": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/basic-lazy-load-data-reporting",
+            "outputPath": "dist/data-reporting-lazy-load",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "basic-lazy-load-data-reporting:build:production"
+              "browserTarget": "data-reporting-lazy-load:build:production"
             },
             "development": {
-              "browserTarget": "basic-lazy-load-data-reporting:build:development"
+              "browserTarget": "data-reporting-lazy-load:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "basic-lazy-load-data-reporting:build"
+            "browserTarget": "data-reporting-lazy-load:build"
           }
         },
         "test": {
@@ -102,5 +102,5 @@
       }
     }
   },
-  "defaultProject": "basic-lazy-load-data-reporting"
+  "defaultProject": "data-reporting-lazy-load"
 }

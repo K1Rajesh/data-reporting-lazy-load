@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'basic-lazy-load-data-reporting'`, () => {
+  it(`should have as title 'data-reporting-lazy-load'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('basic-lazy-load-data-reporting');
+    expect(app.title).toEqual('data-reporting-lazy-load');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('basic-lazy-load-data-reporting app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('data-reporting-lazy-load app is running!');
   });
 });
