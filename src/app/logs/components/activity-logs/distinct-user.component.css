@@ -1,0 +1,36 @@
+.distinct-user-table{
+    width: 40rem !important;
+ }
+
+ .disctinct-count-card{
+    height: 5rem;
+    width: 7rem;
+    margin-left: 2rem;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    border: 1px slategrey solid;
+
+
+    .disctinct-count-card-header{
+        height: 2rem;
+        width: inherit;
+        display: flex;
+        border-radius: 1rem 1rem 0 0;
+        background-color: darkslategrey;
+        color: white;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .disctinct-count-card-count{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: auto;
+    }
+
+}

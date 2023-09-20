@@ -1,0 +1,14 @@
+ .feature-card-container{
+    width: 300px;
+    height: 300px;
+    margin-right: 20px;
+    cursor: pointer;
+    border: 5px solid #007BC9;
+    overflow: hidden;
+}
+.feature-card{
+    width: 300px;
+    height: 300px;
+} 
+
+

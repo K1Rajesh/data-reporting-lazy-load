@@ -1,0 +1,10 @@
+<div class="dashboard-container">
+    
+    <iframe [src]="dashboardLink | safe:'url'"
+     style="height:100%;width: 100%;"
+     allowfullscreen *ngIf="!dasboardLinkEmpty "></iframe> 
+     <div *ngIf="dasboardLinkEmpty ">
+      <img [src]="uFillIconPath" alt="" class="feature-card">
+     </div>
+
+</div>

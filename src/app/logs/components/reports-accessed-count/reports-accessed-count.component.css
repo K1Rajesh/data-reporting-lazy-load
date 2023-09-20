@@ -1,0 +1,25 @@
+.reports-accessed-count-table{
+    width: 30rem !important;
+}
+.reports-gaph-container{
+    margin-left: 5rem;
+    width: 800px;
+}
+
+.apply-filter{
+    cursor: pointer;
+    grid-row: 3;
+    grid-column: 1;
+}
+.clear-filter{
+    cursor: pointer;
+    grid-row: 3;
+    grid-column: 2;
+}
+.primary-btn{
+    color: white !important;
+    padding: 4px!important;
+    background-color: #0078e7;
+    border: none !important;
+    border-radius: 2px;
+}

@@ -1,0 +1,62 @@
+<div class="container">
+
+  <div class="back-button-container">
+    <span class="back-button" routerLink="../"> &lt; Back</span>
+  </div>
+  
+    <div class="title-container">
+      <h2 class="title-text">
+        All Distinct Users
+      </h2>
+      <div class="disctinct-count-card">
+        <div class="disctinct-count-card-header">Count</div>
+        <div class="disctinct-count-card-count">{{distinctUsersDataSource?.length ?
+          distinctUsersDataSource.length : '0' }}</div>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="table distinct-user-table">
+        <thead>
+          <tr>
+            <th class="header-container">
+              <div class="header-content">
+                <span> User </span>
+                <span class="sort-icon">
+                  <i class="icon-sort-asc" (click)="userSort('asc','userName')"></i>
+                  <i class="icon-sort-desc" (click)="userSort('desc','userName')"></i>
+                </span>
+              </div>
+            </th>
+            <th class="header-container">EmailId</th>
+            <th class="header-container">
+              <div class="header-content">
+                <span> Login At </span>
+                <span class="sort-icon">
+                  <i class="icon-sort-asc" (click)="userSort('asc','loginAt')"></i>
+                  <i class="icon-sort-desc" (click)="userSort('desc','loginAt')"></i>
+                </span>
+              </div>
+            </th>
+          </tr>     
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of distinctUsersDataSource"  class="row-data distinct-user-row">
+            <td class="cell-data user distinct-user-cell" *ngIf="row">
+              {{ refineUserName(row!._id.user)}}
+            </td>
+            <td class="cell-data user distinct-user-cell" *ngIf="row">
+              {{ row!._id.emailId}}
+            </td>
+            <td class="cell-data user distinct-user-cell" *ngIf="row">
+              {{ row!.date | date : 'dd-MM-YYYY HH:mm:ss' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+  
+  
+  

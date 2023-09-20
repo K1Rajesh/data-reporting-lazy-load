@@ -1,0 +1,19 @@
+<div class="container feature-cards">
+    <div class="feature-card" *ngFor="let subFeatureCard of subFeatureCards" 
+    (click)="selectSubFeature(subFeatureCard.cardName)">
+
+            <div>
+
+                <div class="feature-card-container" >
+               
+                   <img [src]="subFeatureCard.iconPath" alt="" class="feature-card">
+               
+               </div> 
+            </div>
+           
+           
+           
+
+        
+    </div>
+</div>

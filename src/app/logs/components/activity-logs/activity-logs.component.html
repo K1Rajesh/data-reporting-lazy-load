@@ -1,0 +1,105 @@
+<div class="container">
+
+  <div class="back-button-container">
+    <span class="back-button" routerLink="../"> &lt; Back</span>
+  </div>
+  
+  <div class="title-container">
+    <h2 class="title-text">
+      {{ActivityLogsTitle}}
+    </h2>
+  </div>
+  <div class="filter-container">
+    <input class="search-feild"  type="text" placeholder="Name" [(ngModel)]="searchName">
+    <input class="search-feild"  type="text" placeholder="Email-Id" [(ngModel)]="searchEmail">
+    <!-- <div class="duration-filter-container">
+
+    </div> -->
+    <div class="calendar-container from">
+       <span>From:</span> <input type="date" [(ngModel)]="fromDate" class="calendar-field"
+       > 
+    </div>
+    <div class="calendar-container to"> 
+      <span>To:</span> <input type="date"  [(ngModel)]="toDate" class="calendar-field"> 
+    </div> 
+    <span class="clear-duration">
+      clear duration
+    </span> 
+
+  </div>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="header-container">
+            <div class="header-content">
+              <span> User </span>
+              <span class="sort-icon">
+                <i class="icon-sort-asc" (click)="userSort('user','asc')"></i>
+                <i class="icon-sort-desc" (click)="userSort('user','desc')"></i>
+              </span>
+            </div>
+          </th>
+          <th class="header-container">
+            <div class="header-content">
+              <span> Login At </span>
+              <span class="sort-icon">
+                <i class="icon-sort-asc" (click)="userSort('date','asc')"></i>
+                <i class="icon-sort-desc" (click)="userSort('date','desc')"></i>
+              </span>
+            </div>
+          </th>
+          <th class="header-container">Logout At</th>
+          <!-- <th class="header-container">Last Active At</th>
+          <th class="header-container">Last Inactive At</th> -->
+          <th class="header-container">
+            <div class="header-content">
+              <span> Duration (in min) </span> 
+              <span class="sort-icon">
+                <i class="icon-sort-asc" (click)="userSort('duration','asc')"></i>
+                <i class="icon-sort-desc" (click)="userSort('duration','desc')"></i>
+              </span>
+            </div>
+          </th>
+          <th class="header-container">EmailId</th>
+          <th class="header-container">Session Id</th>
+        </tr>     
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of dataSource | search:'name':searchName : 'email': searchEmail : 'fromDate': fromDate : toDate" 
+        class="row-data">
+          <td class="cell-data user">
+            {{ refineUserName(row.user)}}
+          </td>
+          <td class="cell-data date">
+            {{row.date | date : 'dd-MM-YYYY HH:mm:ss'}}
+          </td>
+          <td class="cell-data date">
+            {{  getLogoutAt(row.logoutAt)  | date : 'dd-MM-YYYY HH:mm:ss'}}
+          </td>
+          <!-- <td class="cell-data date">
+            {{row.lastActiveAt | date : 'dd-MM-YYYY HH:mm:ss'}}
+          </td>
+          <td class="cell-data date">
+            {{row.lastInactiveAt | date : 'dd-MM-YYYY HH:mm:ss'}}
+          </td> -->
+          <td class="cell-data date">
+            <!-- {{row.duration ? row.duration : row.sessionIntervalTimer }} -->
+            {{getDuration(row.logoutAt , row.date)}}
+          </td>
+          <td class="cell-data user">
+            {{row.emailId}}
+          </td>
+          <td class="cell-data session-id" >
+            <div 
+            [routerLink]="['../ui-log/' + row.sessionId ]"
+            class="session-id-value"> {{row?.sessionId}} </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+

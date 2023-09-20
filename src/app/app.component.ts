@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppModel } from './model/app.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'basic-lazy-load-data-reporting';
+  title = 'data-reporting';
+  constructor(private appModel:AppModel){
+    
+  }
+  ngOnInit(){
+    console.log("At AppComponent ngOnInit");
+    this.appModel.init();
+  }
+  get isAuthenticated(){
+    return this.appModel.isAuthenticated;
+  }
+  ngOnDestroy(){
+    this.appModel.destroy();
+  }
 }

@@ -1,0 +1,13 @@
+.dashboard-container{
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-card{
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+} 

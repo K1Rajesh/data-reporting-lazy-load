@@ -1,0 +1,40 @@
+<nav class="side-nav" >
+    <ul>
+        <li *ngFor="let sideNavItem of sideNavList">
+            <ng-container *ngIf="sideNavItem.isEnabled" >
+                <div 
+                class="side-nav-item" 
+                [ngClass]="sideNavItem.name.toLowerCase()"
+                (click)="selectSideNavItem(sideNavItem)"
+                [routerLink]="getRouteLink(sideNavItem.name)"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}"
+                >
+                <div>
+                    {{sideNavItem.name}}
+                </div>
+                <span class="caret" *ngIf="sideNavItem.hasSubMenu"
+                    [ngClass]="{'caret-up' : !sideNavItem.showSubMenu}">
+                </span>
+                 
+                </div>
+                <ul class="sideSubNavList"  *ngIf="sideNavItem.hasSubMenu"
+                [ngClass]="{'sideSubNavList-show':sideNavItem.showSubMenu}">
+                    <li *ngFor="let subNavItem of getSubNavItemList(sideNavItem.name)"> 
+                        <div class="side-nav-sub-item" 
+                        (click)="selectSideNavSubItem(sideNavItem.name,subNavItem )"
+                         routerLinkActive="sub-nav-active"
+                            [routerLinkActiveOptions]="{exact:false}"
+                            [routerLink] = "getRouteLink(sideNavItem.name,subNavItem)"
+                            [queryParams] = "['ufill','lig'].includes(sideNavItem.name.toLowerCase()) ? {dashboard :subNavItem } : {}"
+                         >{{ subNavItem }}</div>
+                    </li>
+                </ul>
+            </ng-container>
+
+        </li>
+        <li (click)="logout()">
+            <div class="side-nav-item logout" >Logout</div>
+        </li>
+    </ul>
+</nav> 

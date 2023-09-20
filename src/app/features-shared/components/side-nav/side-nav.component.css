@@ -1,0 +1,90 @@
+ 
+nav{
+    font-size: 400;
+    font-family: 'Ubuntu', sans-serif;
+}
+ul{
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+li{
+
+    border-bottom: 1px solid #555;   
+}
+ul li:hover{
+    width: calc(100% - 1px);
+}
+li:first-child{
+    border-top: 1px solid #555;
+}
+ul li ul{
+    background-color: #87BEE2;
+    list-style-type: none;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+ul li ul li:last-child{
+    border-bottom: none;
+}
+.active{
+    background-color: #5072A7 ;
+} 
+.sub-nav-active{
+    background-color: #819BC3 ;
+} 
+.side-nav-item{
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+.side-nav-sub-item{
+    cursor: pointer;
+    padding: 6px 6px 6px 12px;
+}
+.side-nav-item:hover{
+    background-color: #5072A7;
+    box-shadow: 2px 1px 4px 4px #87BEE2; /* added on 0619 */
+}
+.side-nav-sub-item:hover{
+    background-color: #819BC3
+}
+
+.sideSubNavList{
+    display: none;
+}
+.sideSubNavList-show{
+    display: block;
+}
+
+.caret {
+    border-left: solid 7px transparent; 
+    border-right: solid 7px transparent; 
+    border-bottom: solid 7px #fff; 
+    margin-top: 5px;
+    height: 0; 
+    width: 0; 
+}
+.caret-up{
+    transform: rotate(180deg);
+}
+
+.side-nav-item.logs{
+    color:cyan;
+}
+.side-nav-item-name.logs{
+    color:cyan; 
+}
+.side-nav-item.indexing{
+    color:brown;
+}
+.side-nav-item.logout{
+    color:white;
+}

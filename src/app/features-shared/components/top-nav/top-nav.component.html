@@ -1,0 +1,19 @@
+<nav class="top-nav">
+    <div class="logo-and-hamburger">
+        <button class="burger" aria-expanded="false" 
+        (click)="toggleSideNav()"
+        [ngClass]="{'burger-expanded':_toggleSideNavVal}">
+            <div class="top-bread"></div>
+            <div class="meat"></div>
+            <div class="bottom-bread"></div>
+          </button>
+        <!-- <div class="bpcl-logo-container">
+            <img src="../assets/bpcl-logo_60x85.png" alt="" class="bpcl-logo">
+        </div> -->
+    </div>
+
+    <div class="acoe-logo-container">
+        <img src="../assets/acoe-logo.png" alt="acoe-logo" (click)="onAcoeLogoClick()" 
+        class="acoe-logo">
+    </div>
+</nav>

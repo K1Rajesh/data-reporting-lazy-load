@@ -1,0 +1,16 @@
+
+<div class="container logs-container">
+    <!-- <div class="back-button-container">
+        <a 
+          class="back-button"
+          routerLink="../"> &lt; Back</a>
+    </div> -->
+    
+     <div *ngIf="!showChild;else child" class="dashboard-container">
+      <img [src]="logsIconPath" alt="" class="feature-card">
+     </div>
+     <ng-template #child>
+        <router-outlet></router-outlet>
+    </ng-template>
+
+</div>

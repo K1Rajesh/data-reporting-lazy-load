@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  samlSPUrl : "http://localhost:3000/saml-sp",
+  samlLogsUrl : "http://10.29.2.4:3002/saml-sp-logs/",
+  env: "http://localhost:3000",
 };
 
 /*

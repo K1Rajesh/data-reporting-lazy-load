@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="header-text">
+      UI Logs
+    </h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <!-- <th *ngFor="let heading of headers" class="header-data"> {{heading}}</th> -->
+          <th class="header-data">Action Item</th>
+          <th class="header-data">Report</th>
+          <th class="header-data">Viewed At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of dataSource" class="row-data">
+          <td class="cell-data user">
+            {{row.actionItem}}
+          </td>
+          <td class="cell-data user">
+            {{row.report}}
+          </td>
+          <td class="cell-data date">
+            {{row.viewedAt | date : 'dd-MM-YYYY HH:mm:ss'}}
+          </td>
+        </tr>
+      </tbody>
+    
+    
+      </table>
+  </div>
+  
+  

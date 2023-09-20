@@ -1,0 +1,22 @@
+
+
+
+/* .title-container{
+    display: flex;
+    justify-content: flex-start;
+} */
+
+
+.session-id-value
+{
+    color: rgb(0,116,204);
+    cursor: pointer;
+    text-decoration: underline;
+}
+.duration-filter-container{
+    display: flex;
+}
+
+
+
+

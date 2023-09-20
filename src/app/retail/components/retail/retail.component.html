@@ -1,0 +1,22 @@
+<div class="dashboard-container">
+   <div class="top-nav" >
+      <app-top-nav></app-top-nav>
+  </div>
+   <div class="sidenav-and-content">
+      <div class="side-nav" [ngClass]="{'side-nav-open':toggleSideNavVal}">
+         <app-side-nav [featureName]="featureName">
+      </app-side-nav>
+       </div>
+        <div *ngIf="!showChild;else child" 
+        class="page-container sub-features" [ngClass]="{'page-container-open':toggleSideNavVal}">
+           <app-sub-fetures [feature]="featureName"></app-sub-fetures>
+        </div>
+        <ng-template #child>
+         <div class="page-container" [ngClass]="{'page-container-open':toggleSideNavVal}">
+            <router-outlet></router-outlet>
+         </div>
+           
+        </ng-template>
+   </div>
+
+</div>

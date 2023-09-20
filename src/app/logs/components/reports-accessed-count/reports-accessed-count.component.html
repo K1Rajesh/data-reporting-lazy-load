@@ -1,0 +1,70 @@
+<div class="container">
+
+  <div class="back-button-container">
+    <span class="back-button" routerLink="../"> &lt; Back</span>
+  </div>
+
+  <div class="title-container">
+    <h2 class="title-text">
+      All Distinct Reports Count
+    </h2>
+  </div>
+
+  <div class="filter-container">
+
+    <div class="calendar-container from">
+       <span>From:</span>
+       <input [ngModel]="fromDate | date:'yyyy-MM-dd'"
+        (ngModelChange)="fromDate = $event" type="date" name="fromDate" 
+        [min]="minDate | date:'yyyy-MM-dd'" [max]="maxDate | date:'yyyy-MM-dd'" 
+        class="calendar-field" [ngClass]="{'error': isInvalidDuration }" />
+    </div>
+    <div class="calendar-container to"> 
+      <span>To:</span>
+      <input [ngModel]="toDate | date:'yyyy-MM-dd'"
+      (ngModelChange)="toDate = $event" type="date" name="toDate" 
+      [min]="minDate | date:'yyyy-MM-dd'" [max]="maxDate | date:'yyyy-MM-dd'" 
+      class="calendar-field" [ngClass]="{'error':isInvalidDuration}"/>
+    </div> 
+    <button class="apply-filter primary-btn" (click)="applyFilterHandler()">
+      Apply Filter
+    </button> 
+    <button class="clear-filter primary-btn" (click)="resetFilterHandler()">
+      Reset Filter
+    </button> 
+
+  </div>
+
+  <div class="reports-gaph-container">
+    <canvas id="acquisitions"></canvas>
+  </div>
+
+  <div class="table-container">
+      <table class="table reports-accessed-count-table">
+        <thead>
+          <tr>
+            <th class="header-container">
+              <div class="header-content">
+                <span> Report </span>
+              </div>
+            </th>
+            <th class="header-container">Accessed Count</th>
+          </tr>     
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of reportsAccessedCountdataSource" 
+           class="row-data reports-accessed-count-row">
+            <td class="cell-data user reports-accessed-count-cell" *ngIf="row">
+              {{ (row!._id)}}
+            </td>
+            <td class="cell-data user reports-accessed-count-cell" *ngIf="row">
+              {{ row!._id?.trim() ? row!.count : 0}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+
+
+</div>

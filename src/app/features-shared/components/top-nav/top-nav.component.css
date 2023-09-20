@@ -1,0 +1,59 @@
+.logout-content{
+    height: 80%;
+    padding: 10px 10px 0px 10px;
+    display: inline-block;
+    
+}
+.logout-content:hover{
+    background-color: #5072A7;
+    cursor: pointer;
+}
+.top-nav{
+    height: 100%;
+    display: flex;
+    background-color: #007BC9;
+    justify-content: space-between;
+}
+.bpcl-logo,.acoe-logo{
+    height: 50px;
+    display: inline-block;
+    cursor: pointer;
+}
+.logo-and-hamburger{
+    display: flex;
+    width: 120px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.burger {
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    border: 0;
+    padding: 0;
+    gap: 4px;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .burger :where(.top-bread, .meat, .bottom-bread) {
+    background: white;
+    height: 4px;
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+    transition: transform 300ms ease;
+  }
+  
+  .burger-expanded .top-bread {
+    transform: translateY(calc(4px + 4px)) rotate(45deg);
+  }
+  
+  .burger-expanded .meat {
+    transform: rotate(45deg);  
+  }
+  
+  .burger-expanded .bottom-bread {
+    transform: translateY(calc(-4px + -4px)) rotate(-45deg);
+  }

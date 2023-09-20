@@ -1,0 +1,12 @@
+.container{
+    height: 100%;
+}
+.feature-cards{
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.feature-card{
+    display: inline-block;
+}
