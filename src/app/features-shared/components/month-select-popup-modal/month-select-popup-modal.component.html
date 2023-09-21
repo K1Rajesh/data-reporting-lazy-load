@@ -1,0 +1,52 @@
+<!-- The Modal -->
+<div id="myModal" class="modal" [ngClass]="{'open':showPopup}">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" (click)="popupCloseHandler()">&times;</span>
+    <div class="duration-select-container">
+
+        <div class="duration-fiscaly-year-container">
+            <label>Fiscal Year:</label>
+            <label class="select" for="slct">
+                <select id="slct" required="required" disabled class="select-fiscaly-year">
+                    <option value="" disabled="disabled" selected="selected">2023-24</option>
+                </select>
+                <svg>
+                    <use xlink:href="#select-arrow-down"></use>
+                </svg>
+            </label>
+            <!-- SVG Sprites-->
+            <svg class="sprites">
+                <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                    <polyline points="1 1 5 5 9 1"></polyline>
+                </symbol>
+            </svg>
+        </div>
+        <div class="duration-month-container">
+            <label>Month:</label> 
+            <label class="select" for="slct">
+                <select id="slct" required="required" disabled>
+                    <option value="" disabled="disabled" selected="selected" class="select-month">August</option>
+                </select>
+                <svg>
+                    <use xlink:href="#select-arrow-down"></use>
+                </svg>
+            </label>
+            <!-- SVG Sprites-->
+            <svg class="sprites">
+                <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                    <polyline points="1 1 5 5 9 1"></polyline>
+                </symbol>
+            </svg>
+        </div>
+        <button class="Kibana-btn" (click)="downloadClickHander()">Download</button>
+
+
+
+    </div>
+
+
+  </div>
+
+</div>
