@@ -1,8 +1,17 @@
-<div class="dashboard-container">
-    
-    <iframe [src]="dashboardLink | safe:'url'"
-     style="height:100%;width: 100%;"
-     allowfullscreen *ngIf="!dasboardLinkEmpty "></iframe> 
+<div class="dashboard-container lig">
+
+    <div *ngIf="!dasboardLinkEmpty" class="lig-dashboard-container">
+        <div class="download-button-container">
+            <button class="Kibana-btn" (click)="downloadClickHandler()">Download</button>
+        </div>
+        <iframe [src]="dashboardLink | safe:'url'"
+        style="height:100%;width: 100%;"
+        allowfullscreen ></iframe> 
+        <div >
+            <app-month-select-popup-modal [showPopup]="showPopup" (submit)="exportCsv($event)"></app-month-select-popup-modal>
+        </div>
+    </div>
+
      <div *ngIf="dasboardLinkEmpty ">
       <img [src]="uFillIconPath" alt="" class="feature-card">
      </div>
