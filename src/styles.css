@@ -13,4 +13,24 @@ html{
      padding: 0;
      overflow: auto;
  }
- 
+ .Kibana-btn{
+    color: white !important;
+    padding: 4px!important;
+    background-color: #419FB2;
+    border: none !important;
+    border-radius: 2px;
+    cursor: pointer;
+
+}
+.Kibana-btn.active{
+    background-color: darkblue;
+}
+
+.primary-btn{
+    color: white !important;
+    padding: 4px!important;
+    background-color: #0078e7;
+    border: none !important;
+    border-radius: 2px;
+    cursor: pointer;
+}
