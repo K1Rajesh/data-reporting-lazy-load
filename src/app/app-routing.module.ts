@@ -27,6 +27,8 @@ const routes: Routes = [
     canActivate: [AuthGaurd],
     loadChildren: () => import('./lubes/lubes.module').then(m => m.LubesModule)
   },
+  { path:'', redirectTo: '/home', pathMatch:'full' },
+  { path:'**' , redirectTo: '/home' }
 ];
 
 @NgModule({
