@@ -19,10 +19,10 @@ export class LigDataService{
             })  
         } 
     }
+    //userEmailId:string,duration: {fiscalYear : string ,month :string}
+    public getLigData(ligDataReqPayLoad:{"email": string,"month":string}):Observable<LigDashboardDataModel>{
+        return this.httpClient.post<LigDashboardDataModel>(environment.apiBackend + "lig_data3",ligDataReqPayLoad)
 
-    public getLigData():Observable<LigDashboardDataModel>{
-        //http://10.29.3.4:3003/saml-sp
-        return this.httpClient.get<LigDashboardDataModel>(environment.apiBackend + "lig_data4")
     }
 
 
