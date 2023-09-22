@@ -17,10 +17,10 @@ const routes: Routes = [
         path:'logs',
         loadChildren: () => import('./../logs/logs.module').then(m => m.LogsModule)
       },
-      // {
-      //   path: 'indexing',
-      //   component: IndexingReportComponent,
-      // }
+      {
+        path: 'indexing',
+        loadChildren: () => import('./../misc-dashboards/misc-dashboards.module').then(m => m.MiscDashboardsModule)
+      }
     ]
 
 
