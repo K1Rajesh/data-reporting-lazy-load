@@ -1,4 +1,4 @@
-export interface UserDetails{
+export interface UserDetailsIModel{
     tenantId: string,
     objectIdentifier: string,
     emailAddress: string,
