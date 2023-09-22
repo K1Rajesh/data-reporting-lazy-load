@@ -4,10 +4,11 @@
 
 export const environment = {
   production: false,
+  name: "Local",
   samlSPUrl : "http://localhost:3000/saml-sp",
   samlLogsUrl : "http://10.29.2.4:3002/saml-sp-logs/",
   env: "http://localhost:3000",
-  apiBackend: "http://localhost:3000/"
+  apiBackend: "http://10.29.2.4:8001/"
 };
 
 /*
