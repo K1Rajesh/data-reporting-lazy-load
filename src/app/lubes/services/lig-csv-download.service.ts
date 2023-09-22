@@ -1,42 +1,31 @@
 import { Injectable } from '@angular/core';
+
 import { LigDataService } from '../services/lig-data.service';
 import { LigDashboardDataModel, LigDashboardAllHeaders } from '../model/lig-dashboard-data.model';
+
+import { UserDetailsModel } from './../../authorized-user/domain/model/user-details.model';
+
 @Injectable({providedIn:'root'})
 export class LigCsvDownloadService{
-    constructor(private ligDataService : LigDataService){
+    constructor(private userDetailsModel: UserDetailsModel,private ligDataService : LigDataService){
         
     }
-    // jsonData : any = [
-    //     {
-    //       name : 'Berlin',
-    //       age : '45',
-    //       country : 'Spain',
-    //       phone : '896514326'
-    //     },
-    //     {
-    //       name : 'Professor',
-    //       age : '42',
-    //       country : 'spain'
-    //     },
-    //     {
-    //       name : 'Tokyo',
-    //       age : '35',
-    //       phone : '854668244'
-    //     },
-    //     {
-    //       name : 'Helsinki',
-    //       phone : '35863297'
-    //     }
-    //   ];
-      
         ngOnInit() {
-      
+          
         }
       
-        exportCsv() {
-          this.ligDataService.getLigData().subscribe((ligDataResponse:LigDashboardDataModel)=>{
-            this.downloadFile(ligDataResponse);
-          })
+        intiateCsvDownload(duration: {fiscalYear : string ,month :string}) {
+          const userEmail = this.userDetailsModel.userDetails?.nameID! //gives email address
+          const ligDataReqPayLoad = {
+            "email":userEmail,
+            "month":duration.month
+          }
+          if(ligDataReqPayLoad){
+              this.ligDataService.getLigData(ligDataReqPayLoad).subscribe((ligDataResponse:LigDashboardDataModel)=>{
+                this.downloadFile(ligDataResponse);
+              })
+          }
+
           
         }
       

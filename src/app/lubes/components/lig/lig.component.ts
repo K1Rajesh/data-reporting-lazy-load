@@ -29,9 +29,9 @@ export class LigComponent implements OnInit {
   get dasboardLinkEmpty():boolean {
       return this.dashboardLink == "" ? true: false
   }
-  public exportCsv(duration: {fiscalYear : string ,month :string}):void{
-    console.log("duration: ",duration)
-    this.ligCsvDownloadService.exportCsv();
+  public downloadSubmitClickHandler(duration: {fiscalYear : string ,month :string}){
+    this.showPopup = false;
+    this.ligCsvDownloadService.intiateCsvDownload(duration)
   }
   public downloadClickHandler():void{
     this.showPopup =  true;
