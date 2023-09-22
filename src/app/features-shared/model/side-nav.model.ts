@@ -4,20 +4,19 @@ import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Router, ActivatedRoute } from "@angular/router"
 
-import { CONST_VALUES } from './../../core/constant-reources';
 
 import { SideNavListDataModel } from './../domain/model/side-nav.model';
+import { UserDetailsIModel } from './../domain/model/user-details.model';
 
 import { ConfigService } from "./../services/config.service";
 import { AuthService } from "./../../services/auth.service";
 import { SideNavService } from "./../services/side-nav.service";
 
+import { CONST_VALUES } from './../../core/constant-reources';
+
 import { SamlLogService } from "./../../logs/services/saml-log.service";
 
-
-import { UserDetails } from './../domain/model/user-details.model'
-
-
+import { UserDetailsModel } from "./../../authorized-user/domain/model/user-details.model";
 
 
 @Injectable()
@@ -34,13 +33,14 @@ export class SideNavModel{
         private UiLogService: SamlLogService,
         private sideNavService : SideNavService,
         private router:Router,
-        private activatedRoute:ActivatedRoute
+        private activatedRoute:ActivatedRoute,
+        private userDetailsModel: UserDetailsModel
         ){
     }
     public init(){
         this.setSideNavItemList(this.featureName)
         this.subscribeSourceConfig();
-        this.subscribeAuthenticatedEvent();
+        this.subscribeAuthenticatedEvent();        
     }
     setSideNavItemList(featureName:string){
         this.sideNavService.setSideNavItemList(featureName)
@@ -72,13 +72,21 @@ export class SideNavModel{
     }
     public subscribeAuthenticatedEvent():void{
         this.subsList.push(
-            this.authService.userSuccessfullyAuthenticatedEvent
-            .pipe(distinctUntilChanged())
-            .subscribe((authResp:boolean)=>{
-                if(authResp ){
-                    this.getUserDetails()
-                }   
-        }) 
+            // this.authService.userSuccessfullyAuthenticatedEvent
+            // .pipe(distinctUntilChanged())
+            // .subscribe((authResp:boolean)=>{
+            //     if(authResp ){
+            //         this.getUserDetails()
+            //     }   
+            // }) 
+
+            this.userDetailsModel.userDetailsEvent.subscribe((userDetails:UserDetailsIModel | undefined)=>{
+                if(userDetails){
+                    this.enableSideNavMenuItems(userDetails);
+                }  
+            })
+
+
         )
     }
     public logout(){
@@ -90,12 +98,12 @@ export class SideNavModel{
             this.UiLogService.addUiLog(actionItem, report);
         }
     }
-    public getUserDetails() : void {
-        this.authService.getUserDetails().subscribe((userDetails: UserDetails)=>{
-            this.enableSideNavMenuItems(userDetails);
-        })
-    }
-    public enableSideNavMenuItems(userDetails: UserDetails){
+    // public getUserDetails() : void {
+    //     this.authService.getUserDetails().subscribe((userDetails: UserDetailsIModel)=>{
+    //         this.enableSideNavMenuItems(userDetails);
+    //     })
+    // }
+    public enableSideNavMenuItems(userDetails: UserDetailsIModel){
         if(userDetails && userDetails.isPrivilegeUser){
             this.updateSideNavListMap();
         }

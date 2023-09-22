@@ -1,9 +1,16 @@
 import {Injectable} from '@angular/core'
 import { Router } from '@angular/router';
-import { AuthService} from './../services/auth.service'
-import { distinctUntilChanged } from 'rxjs/operators';
+
+
 import { Subscription } from 'rxjs';
-import { AuthRespModel } from '../domain/model/auth-response.model'
+import { distinctUntilChanged } from 'rxjs/operators';
+
+import { AuthService} from './../services/auth.service'
+
+import { AuthRespModel } from '../domain/model/auth-response.model';
+import { UserDetailsModel } from './../authorized-user/domain/model/user-details.model'
+
+
 
 @Injectable({
     providedIn: 'root'
@@ -13,12 +20,13 @@ export class AppModel{
     intervalGetCookieSyncSPSessionTime : number | undefined;  //= 180000//environment.initialCookieCheckInterval
     sessionExpireWarningBeforeTime : number = 30000;
     constructor(private authService:AuthService,
-        private router:Router){
+        private router:Router, private userDetailsModel : UserDetailsModel){
 
     }
     init(){
         this.subscriptions = new Array<Subscription>();
         this.subscribeAuthenticatedEvent();
+        this.userDetailsModel.init();
         if(!this.authService.isAuthenticated){
             this.authService.callAndSubIsAuthenticatedApi();
         } 
@@ -129,6 +137,7 @@ export class AppModel{
         this.router.navigate(['/login'])
     }
     destroy(){
+        this.userDetailsModel.destroy();
         this.subscriptions.forEach((sub)=>{
             sub.unsubscribe();
         })
