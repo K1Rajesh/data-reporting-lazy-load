@@ -21,7 +21,7 @@ export class LigDataService{
     }
     //userEmailId:string,duration: {fiscalYear : string ,month :string}
     public getLigData(ligDataReqPayLoad:{"email": string,"month":string}):Observable<LigDashboardDataModel>{
-        return this.httpClient.post<LigDashboardDataModel>(environment.apiBackend + "lig_data3",ligDataReqPayLoad)
+        return this.httpClient.post<LigDashboardDataModel>(environment.pukipy + "lig_data1",ligDataReqPayLoad)
 
     }
 
