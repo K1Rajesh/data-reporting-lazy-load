@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LigModel } from './../../model/lig.model';
-import { LigCsvDownloadService } from './../../services/lig-csv-download.service';
+
 
 @Component({
   selector: 'app-lig',
   templateUrl: './lig.component.html',
   styleUrls: ['./../lubes/lubes.component.css','./lig.component.css']
 })
-export class LigComponent implements OnInit {
+export class LigComponent implements OnInit, OnDestroy {
 
   uFillIconPath = "./assets/lig_logo_0904.png" //"./assets/lig_logo.jpg";
   public showPopup: boolean = false;
-  constructor(private ligModel:LigModel, private ligCsvDownloadService : LigCsvDownloadService){
+  constructor(private ligModel:LigModel){
     console.log("At LigComponenet constructor");
   }
 
@@ -29,14 +29,7 @@ export class LigComponent implements OnInit {
   get dasboardLinkEmpty():boolean {
       return this.dashboardLink == "" ? true: false
   }
-  public downloadSubmitClickHandler(duration: {fiscalYear : string ,month :string}){
-    this.showPopup = false;
-    this.ligCsvDownloadService.intiateCsvDownload(duration)
-  }
-  public downloadClickHandler():void{
-    this.showPopup =  true;
-  }
-  ngDestroy():void{
+  ngOnDestroy():void{
     console.log("At UfillComponent ngOnInit");
     this.ligModel.destroy();
   }
