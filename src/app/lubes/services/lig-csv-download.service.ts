@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 
 
-import { LigDashboardAllHeaders } from '../model/lig-dashboard-data.model';
-
-
-
 @Injectable({providedIn:'root'})
 export class LigCsvDownloadService{
+    private downloadFileName = "lig-report.csv";
     constructor(){
         
     }
@@ -14,8 +11,8 @@ export class LigCsvDownloadService{
           
         }
             
-        downloadFile(data:any, filename = 'data') {
-          let arrHeader = LigDashboardAllHeaders;
+        downloadFile(data:any, csvHeaders:Array<string>) {
+          let arrHeader = csvHeaders;
           let csvData = this.ConvertToCSV(data, arrHeader);
           console.log(csvData)
           let blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' });
@@ -26,21 +23,21 @@ export class LigCsvDownloadService{
             dwldLink.setAttribute("target", "_blank");
           }
           dwldLink.setAttribute("href", url);
-          dwldLink.setAttribute("download", "sample.csv");
+          dwldLink.setAttribute("download", this.downloadFileName);
           dwldLink.style.visibility = "hidden";
           document.body.appendChild(dwldLink);
           dwldLink.click();
           document.body.removeChild(dwldLink);
         }
       
-        ConvertToCSV(objArray:any, headerList:any) {
-          console.log(objArray);
-          console.log(headerList);
+        ConvertToCSV(objArray:any, headerList:Array<string>) {
+          //console.log(objArray);
+          //console.log(headerList);
           let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
           let str = '';
           let row = 'S.No,';
       
-          let newHeaders = LigDashboardAllHeaders;
+          let newHeaders = headerList;
       
           for (let index in newHeaders) {
             row += newHeaders[index] + ',';

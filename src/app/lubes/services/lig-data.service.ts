@@ -2,7 +2,7 @@ import { Injectable  } from "@angular/core"
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http"
 import { environment } from './../../../environments/environment';
 import { Observable, of} from 'rxjs';
-import { LigDashboardDataModel } from '../model/lig-dashboard-data.model'
+import { LigDataResponseModel } from '../model/api/lig-data-response.model'
 
 
 
@@ -20,8 +20,8 @@ export class LigDataService{
         } 
     }
     //userEmailId:string,duration: {fiscalYear : string ,month :string}
-    public getLigData(ligDataReqPayLoad:{"email": string,"month":string}):Observable<LigDashboardDataModel>{
-        return this.httpClient.post<LigDashboardDataModel>(environment.pukipy + "lig_data1",ligDataReqPayLoad)
+    public getLigData(ligDataReqPayLoad:{"email": string,"month":string}):Observable<LigDataResponseModel>{
+        return this.httpClient.post<LigDataResponseModel>(environment.pukipy + "lig_data1",ligDataReqPayLoad)
 
     }
 
