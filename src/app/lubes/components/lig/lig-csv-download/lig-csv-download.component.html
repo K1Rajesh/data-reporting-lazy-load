@@ -1,0 +1,23 @@
+<div>
+    <div class="download-button-container">
+
+        <div class="button-and-loader-container">
+            <ng-container *ngIf="!isDataLoading;else appLoader">
+                <button class="Kibana-btn" 
+                (click)="downloadClickHandler()">Download
+            </button>
+                
+            </ng-container>
+    
+           <ng-template #appLoader>
+            <app-loader ></app-loader>
+           </ng-template>
+        </div>
+ 
+    </div>
+    <app-month-select-popup-modal [showPopup]="showPopup" (submit)="downloadSubmitClickHandler($event)"></app-month-select-popup-modal>
+
+</div>
+
+
+

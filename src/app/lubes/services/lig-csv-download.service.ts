@@ -1,34 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { LigDataService } from '../services/lig-data.service';
-import { LigDashboardDataModel, LigDashboardAllHeaders } from '../model/lig-dashboard-data.model';
 
-import { UserDetailsModel } from './../../authorized-user/domain/model/user-details.model';
+import { LigDashboardAllHeaders } from '../model/lig-dashboard-data.model';
+
+
 
 @Injectable({providedIn:'root'})
 export class LigCsvDownloadService{
-    constructor(private userDetailsModel: UserDetailsModel,private ligDataService : LigDataService){
+    constructor(){
         
     }
         ngOnInit() {
           
         }
-      
-        intiateCsvDownload(duration: {fiscalYear : string ,month :string}) {
-          const userEmail = this.userDetailsModel.userDetails?.nameID! //gives email address
-          const ligDataReqPayLoad = {
-            "email":userEmail,
-            "month":duration.month
-          }
-          if(ligDataReqPayLoad){
-              this.ligDataService.getLigData(ligDataReqPayLoad).subscribe((ligDataResponse:LigDashboardDataModel)=>{
-                this.downloadFile(ligDataResponse);
-              })
-          }
-
-          
-        }
-      
+            
         downloadFile(data:any, filename = 'data') {
           let arrHeader = LigDashboardAllHeaders;
           let csvData = this.ConvertToCSV(data, arrHeader);

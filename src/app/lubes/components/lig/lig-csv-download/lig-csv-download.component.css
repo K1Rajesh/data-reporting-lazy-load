@@ -1,0 +1,8 @@
+.download-button-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.button-and-loader-container {
+    margin-right: 270px;
+}
