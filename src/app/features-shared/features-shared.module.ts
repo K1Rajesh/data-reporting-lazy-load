@@ -8,6 +8,7 @@ import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { SideNavComponent} from './components/side-nav/side-nav.component';
 import { SubFeturesComponent} from './components/sub-fetures/sub-fetures.component';
 import { MonthSelectPopupModalComponent } from './components/month-select-popup-modal/month-select-popup-modal.component';
+import { LoaderUiComponent } from './components/loader-ui/loader-ui.components'
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { MonthSelectPopupModalComponent } from './components/month-select-popup-
     SideNavComponent,
     SubFeturesComponent,
     MonthSelectPopupModalComponent,
+    LoaderUiComponent,
     SafePipe
   ],
   imports: [
@@ -27,6 +29,7 @@ import { MonthSelectPopupModalComponent } from './components/month-select-popup-
     SideNavComponent,
     SubFeturesComponent,
     MonthSelectPopupModalComponent,
+    LoaderUiComponent,
     SafePipe
   ]
 })
