@@ -9,8 +9,11 @@
         <div class="duration-fiscaly-year-container">
             <label>Fiscal Year:</label>
             <label class="select" for="slct">
-                <select id="slct" required="required" disabled class="select-fiscaly-year">
-                    <option value="" disabled="disabled" selected="selected">2023-24</option>
+                <select id="slct"  class="select-fiscaly-year"
+                (change)="onFinacialYearSelcetChangeHandler($event.target)">
+                    <option value=null>Select</option>
+                    <option *ngFor="let year of dataAvailableForFinancialYears"
+                    [value]="year" > {{year}} - {{year+1}} </option>
                 </select>
                 <svg>
                     <use xlink:href="#select-arrow-down"></use>
@@ -26,8 +29,11 @@
         <div class="duration-month-container">
             <label>Month:</label> 
             <label class="select" for="slct">
-                <select id="slct" required="required" disabled>
-                    <option value="" disabled="disabled" selected="selected" class="select-month">August</option>
+                <select id="slct" 
+                [(ngModel)]="selectedMonth">
+                    <option value=null>Select</option>
+                    <option *ngFor = "let month of dataAvailableForMonths"
+                    [value]="month" class="select-month"> {{month | monthName}}</option>
                 </select>
                 <svg>
                     <use xlink:href="#select-arrow-down"></use>
