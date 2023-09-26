@@ -21,8 +21,15 @@ export class MonthSelectPopupModalComponent {
   get submit():EventEmitter<{fiscalYear : string ,month :string}> {
     return this.model.submit;
   }
+  @Output() 
+  get close():EventEmitter<boolean> {
+    return this.model.close;
+  }
   get selectedFinancialYear(): number | null{
     return this.model.selectedFinancialYear
+  }
+  set selectedFinancialYear(val : number | null ){
+    this.model.selectedFinancialYear = val;
   }
   get selectedMonth(): number | null{
     return this.model.selectedMonth
@@ -55,10 +62,8 @@ export class MonthSelectPopupModalComponent {
   public downloadClickHander():void{
     this.model.downloadClickHander();
   }
-  public onFinacialYearSelcetChangeHandler(element:any):void{
-    if(element){
-      this.model.onFinacialYearSelcetChangeHandler(element as HTMLSelectElement)
-    }
+  public onFinacialYearSelcetChangeHandler():void{
+    this.model.onFinacialYearSelcetChangeHandler()
     
   }
 

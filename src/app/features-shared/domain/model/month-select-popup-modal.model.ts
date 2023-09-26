@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { EventEmitter } from  '@angular/core';
 
-enum Month {"Jan"=0,"Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"}
-
 @Injectable()
 export class MonthSelectPopupModalModel{
 
     public showPopup: boolean = false;
     public submit: EventEmitter<{fiscalYear : string ,month :string}> = new EventEmitter<{fiscalYear : string ,month :string}>();
+    public close: EventEmitter<boolean> = new EventEmitter<boolean>();
+
     private today : Date;
     private currentYear : number;
     private currentMonth : number;
@@ -18,6 +18,8 @@ export class MonthSelectPopupModalModel{
     public selectedFinancialYear: number | null = null;
     public selectedMonth : number | null = null;
     private fiscalYearStartMonth = 3; // April (0-based index) 
+    private  dataAvailableForMonthsOtherFiscalYears: Array<number> = new Array<number>();
+    private  dataAvailableForMonthsOtherCurrentFinancialYear: Array<number> = new Array<number>();
 
     public init():void{
         this.today = new Date();
@@ -26,6 +28,21 @@ export class MonthSelectPopupModalModel{
         this.currentFinancialYear = this.getCurrentFinancialYear();
         this.dataAvailableForFinancialYears = this.getDataAvailableForFinancialYears(this.dataAvailableSinceYear, this.currentFinancialYear )
         this.dataAvailableForMonths = this.getDataAvailableForMonths();
+
+        this.dataAvailableForMonthsOtherFiscalYears = [
+          ...[...Array((11- this.fiscalYearStartMonth)+1).keys()].map(i=>{ 
+            return i+ this.fiscalYearStartMonth
+          }) 
+          ,
+          ...[...Array((this.fiscalYearStartMonth - 0)).keys()].map(i=>{ 
+          return i+0
+          }) 
+        ]
+       this.dataAvailableForMonthsOtherCurrentFinancialYear = [
+        ...[...Array((this.currentMonth- this.fiscalYearStartMonth)+1).keys()].map(i=>{ 
+            return i+ this.fiscalYearStartMonth
+        }) 
+        ]
         
     }  
     public popupOpenHandler():void{
@@ -34,6 +51,7 @@ export class MonthSelectPopupModalModel{
       public popupCloseHandler():void{
         this.setFilterIntialVal();
         this.showPopup = false;
+        this.close.emit(true)
       }
       public downloadClickHander():void{
         this.setFilterIntialVal();
@@ -48,27 +66,14 @@ export class MonthSelectPopupModalModel{
     }
     private getDataAvailableForMonths():Array<number>{
         if (this.selectedFinancialYear && this.selectedFinancialYear < this.currentFinancialYear){
-              return [
-                ...[...Array((11- this.fiscalYearStartMonth)+1).keys()].map(i=>{ 
-                  return i+ this.fiscalYearStartMonth
-                }) 
-                ,
-                ...[...Array((this.fiscalYearStartMonth - 0)).keys()].map(i=>{ 
-                return i+0
-                }) 
-              ]
+              return this.dataAvailableForMonthsOtherFiscalYears
         }
         else if(this.selectedFinancialYear){
-              return [
-                    ...[...Array((this.currentMonth- this.fiscalYearStartMonth)+1).keys()].map(i=>{ 
-                        return i+ this.fiscalYearStartMonth
-                    }) 
-              ]
+              return this.dataAvailableForMonthsOtherCurrentFinancialYear;
         }
         else  return []; 
     }
-    public onFinacialYearSelcetChangeHandler(element:HTMLSelectElement):void{
-      this.selectedFinancialYear = element.value && parseInt(element.value) ? parseInt(element.value) :  null;
+    public onFinacialYearSelcetChangeHandler():void{
       this.setMonthFilterForSelectedYear();
     }
     public setMonthFilterIntialVal():void{

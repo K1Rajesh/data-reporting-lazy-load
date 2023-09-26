@@ -10,7 +10,8 @@
             <label>Fiscal Year:</label>
             <label class="select" for="slct">
                 <select id="slct"  class="select-fiscaly-year"
-                (change)="onFinacialYearSelcetChangeHandler($event.target)">
+                [(ngModel)]="selectedFinancialYear"
+                (change)="onFinacialYearSelcetChangeHandler()">
                     <option value=null>Select</option>
                     <option *ngFor="let year of dataAvailableForFinancialYears"
                     [value]="year" > {{year}} - {{year+1}} </option>
@@ -48,11 +49,6 @@
         </div>
         <button class="Kibana-btn" (click)="downloadClickHander()">Download</button>
 
-
-
     </div>
-
-
   </div>
-
 </div>
