@@ -31,7 +31,7 @@ export class LigCsvDownloadComponent implements OnInit, OnDestroy {
 
     })
   }
-  public downloadSubmitClickHandler(duration: {fiscalYear : string ,month :string}){
+  public monthSelectModalSubmitHandler(duration: {fiscalYear : string ,month :string}){
     this.showPopup = false;
     this.isDataLoading = true;
 
@@ -52,6 +52,9 @@ export class LigCsvDownloadComponent implements OnInit, OnDestroy {
       )
     )
 
+  }
+  public monthSelectModalCloseHandler():void{
+    this.showPopup =  false;
   }
   public downloadClickHandler():void{
     this.showPopup =  true;

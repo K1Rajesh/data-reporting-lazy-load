@@ -15,7 +15,8 @@
         </div>
  
     </div>
-    <app-month-select-popup-modal [showPopup]="showPopup" (submit)="downloadSubmitClickHandler($event)"></app-month-select-popup-modal>
+    <app-month-select-popup-modal [showPopup]="showPopup" 
+    (submit)="monthSelectModalSubmitHandler($event)" (close)="monthSelectModalCloseHandler()"></app-month-select-popup-modal>
 
 </div>
 
