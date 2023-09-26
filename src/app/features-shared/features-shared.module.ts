@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { SafePipe } from './pipes/app.filter.pipe';
+import { MonthNamePipe } from './pipes/month-name.pipe'
 
 import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { SideNavComponent} from './components/side-nav/side-nav.component';
@@ -18,10 +20,12 @@ import { LoaderUiComponent } from './components/loader-ui/loader-ui.components'
     SubFeturesComponent,
     MonthSelectPopupModalComponent,
     LoaderUiComponent,
-    SafePipe
+    SafePipe,
+    MonthNamePipe
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule
   ],
   exports:[
