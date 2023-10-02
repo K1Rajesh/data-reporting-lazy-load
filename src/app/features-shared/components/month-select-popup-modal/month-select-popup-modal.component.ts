@@ -18,7 +18,7 @@ export class MonthSelectPopupModalComponent {
     this.model.showPopup = val
   }
   @Output() 
-  get submit():EventEmitter<{fiscalYear : string ,month :string}> {
+  get submit():EventEmitter<{fiscalYear : string | undefined ,month :string | undefined}> {
     return this.model.submit;
   }
   @Output() 

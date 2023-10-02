@@ -31,7 +31,8 @@ export class LigCsvDownloadComponent implements OnInit, OnDestroy {
 
     })
   }
-  public monthSelectModalSubmitHandler(duration: {fiscalYear : string ,month :string}){
+  public monthSelectModalSubmitHandler(duration: 
+    {fiscalYear : string | undefined ,month :string | undefined}){
     this.showPopup = false;
     this.isDataLoading = true;
 

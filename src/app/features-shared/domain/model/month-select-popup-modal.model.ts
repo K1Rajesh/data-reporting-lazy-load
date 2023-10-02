@@ -5,7 +5,8 @@ import { EventEmitter } from  '@angular/core';
 export class MonthSelectPopupModalModel{
 
     public showPopup: boolean = false;
-    public submit: EventEmitter<{fiscalYear : string ,month :string}> = new EventEmitter<{fiscalYear : string ,month :string}>();
+    public submit: EventEmitter<{fiscalYear : string | undefined,month :string | undefined}> =
+     new EventEmitter<{fiscalYear : string | undefined ,month :string | undefined}>();
     public close: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     private today : Date;
@@ -56,7 +57,11 @@ export class MonthSelectPopupModalModel{
       public downloadClickHander():void{
         this.setFilterIntialVal();
         this.showPopup = false;
-        this.submit.emit({fiscalYear : "2023-2024",month :"2023-08"})
+        const submittedValue = {
+          fiscalYear : this.selectedFinancialYear ? this.selectedFinancialYear + "-" + this.selectedFinancialYear+1 : undefined,
+          month : this.selectedMonth ? this.selectedFinancialYear + "-" + this.selectedMonth+1 : undefined
+        }
+        this.submit.emit(submittedValue)
       }
     private getCurrentFinancialYear():number{
         return ((this.currentMonth >=0 && this.currentMonth <=11) && (this.currentMonth  >= this.fiscalYearStartMonth)) ? this.currentYear :  this.currentYear -1;
