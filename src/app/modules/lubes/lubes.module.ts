@@ -8,8 +8,7 @@ import { LigCsvDownloadComponent } from './components/lig/lig-csv-download/lig-c
 import { LubesRoutingModule } from './lubes-routing.module'
 
 import { FeaturesSharedModule } from './../features-shared/features-shared.module';
-
-
+import { FEDashboardsModule } from '../fe-dashboards/fe-dashboards.module';
 
 
 @NgModule({
@@ -21,7 +20,8 @@ import { FeaturesSharedModule } from './../features-shared/features-shared.modul
   imports: [
     CommonModule,
     LubesRoutingModule,
-    FeaturesSharedModule
+    FeaturesSharedModule,
+    FEDashboardsModule
   ],
   exports:[
     LubesComponent,

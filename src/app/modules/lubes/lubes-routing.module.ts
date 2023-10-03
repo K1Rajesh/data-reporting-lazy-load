@@ -20,6 +20,9 @@ const routes: Routes = [
       {
         path: 'indexing',
         loadChildren: () => import('./../misc-dashboards/misc-dashboards.module').then(m => m.MiscDashboardsModule)
+      },{
+        path:'fe-dashboards',
+        loadChildren: () => import('./../fe-dashboards/fe-dashboards.module').then(m => m.FEDashboardsModule)
       }
     ]
 
