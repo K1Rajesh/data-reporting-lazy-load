@@ -7,7 +7,7 @@ import { LigDataService } from './../../../services/lig-data.service';
 import { LigDataResponseModel } from './../../../model/api/lig-data-response.model';
 import { LigDashboardTableApiHeaders, LigDashboardTableHeadersApiMapping } from './../../../model/lig-dashboard-data.model';
 
-import { UserDetailsModel } from './../.././../../authorized-user/domain/model/user-details.model';
+import { UserDetailsModel } from '../../../../authorized-user/domain/models/user-details.model';
 
 @Component({
   selector: 'app-lig-csv-download',

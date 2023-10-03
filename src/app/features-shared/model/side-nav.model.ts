@@ -16,7 +16,7 @@ import { CONST_VALUES } from './../../core/constant-reources';
 
 import { SamlLogService } from "./../../logs/services/saml-log.service";
 
-import { UserDetailsModel } from "./../../authorized-user/domain/model/user-details.model";
+import { UserDetailsModel } from "../../authorized-user/domain/models/user-details.model";
 
 
 @Injectable()

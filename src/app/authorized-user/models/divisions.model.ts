@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { FeatureCardModel } from './../domain/model/feature-card-model';
-import { sampleFeatureCards } from './../domain/model/feature-card-model';
+import { FeatureCardModel } from '../domain/models/feature-card-model';
+import { sampleFeatureCards } from '../domain/models/feature-card-model';
 import {Subscription} from 'rxjs'
 @Injectable({
     providedIn: 'root'

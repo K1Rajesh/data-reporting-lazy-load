@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FeatureCardModel } from './../../domain/model/feature-card-model';
-import { DivisionsModel } from './../../model/divisions.model';
+import { FeatureCardModel } from '../../domain/models/feature-card-model';
+import { DivisionsModel } from '../../models/divisions.model';
 
 @Component({
   selector: 'app-home',

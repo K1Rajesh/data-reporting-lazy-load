@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { FeatureCardModel } from './../../../domain/model/feature-card-model';
+import { FeatureCardModel } from '../../../domain/models/feature-card-model';
 import { SamlLogService } from './../../../../logs/services/saml-log.service'
 @Component({
   selector: 'app-feature-card',
