@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from './../../features-shared/services/config.service';
-import { ConfigModel } from './../../features-shared/domain/model/config.model';
+import { ConfigModel } from '../../features-shared/domain/models/config.model';
 import { take } from 'rxjs/operators'
 
 @Component({
