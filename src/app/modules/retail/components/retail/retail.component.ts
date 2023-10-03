@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CONST_VALUES } from './../../../core/constant-reources'
+import { CONST_VALUES } from './../../../../core/constant-reources'
 
 import { RetailModel } from '../../models/retail.model';
 import { UfillModel } from '../../models/ufill.model';
@@ -15,7 +15,7 @@ import { ConfigService } from './../../../features-shared//services/config.servi
 @Component({
   selector: 'app-retail',
   templateUrl: './retail.component.html',
-  styleUrls: ['./../../../app.component.css','./retail.component.css'],
+  styleUrls: ['./../../../../app.component.css','./retail.component.css'],
   providers: [SideNavModel,UfillModel,SideNavService]
 })
 export class RetailComponent implements OnInit {

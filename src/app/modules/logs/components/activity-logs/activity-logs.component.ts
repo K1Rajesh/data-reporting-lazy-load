@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CONST_VALUES } from './../../../core/constant-reources'
+import { CONST_VALUES } from './../../../../core/constant-reources'
 
 import { ActivityLogModel } from './../../models/activity-log.model'
 import { ActivityLogDModel} from './../../domain/models/activity-log.model'

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ActivityLogDModel } from './../domain/models/activity-log.model';
-import { UtilService } from './../../core/services/util.service';
+import { UtilService } from './../../../core/services/util.service';
 
 @Pipe({
   name: 'search'

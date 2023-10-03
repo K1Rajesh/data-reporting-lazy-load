@@ -15,17 +15,17 @@ const routes: Routes = [
   { 
     path:'home', 
     canActivate: [AuthGaurd],
-    loadChildren: () => import('./authorized-user/authorized-user.module').then(m => m.AuthorizedUserModule)
+    loadChildren: () => import('./modules/authorized-user/authorized-user.module').then(m => m.AuthorizedUserModule)
   },
   { 
     path:'retail', 
     canActivate: [AuthGaurd],
-    loadChildren: () => import('./retail/retail.module').then(m => m.RetailModule)
+    loadChildren: () => import('./modules/retail/retail.module').then(m => m.RetailModule)
   },
   { 
     path:'lubes', 
     canActivate: [AuthGaurd],
-    loadChildren: () => import('./lubes/lubes.module').then(m => m.LubesModule)
+    loadChildren: () => import('./modules/lubes/lubes.module').then(m => m.LubesModule)
   },
   { path:'', redirectTo: '/home', pathMatch:'full' },
   { path:'**' , redirectTo: '/home' }

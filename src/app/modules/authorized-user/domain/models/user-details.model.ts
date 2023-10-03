@@ -2,7 +2,7 @@ import { Injectable,EventEmitter } from "@angular/core";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { distinctUntilChanged } from 'rxjs/operators';
 
-import { AuthService } from "../../../services/auth.service";
+import { AuthService } from "../../../../services/auth.service";
 
 export type userDetailsIModel = {
     tenantId: string,

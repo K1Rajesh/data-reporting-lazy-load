@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Subscription } from 'rxjs'
 
-import { CONST_VALUES } from "./../../core/constant-reources";
+import { CONST_VALUES } from "./../../../core/constant-reources";
 
 import { ActivityLogDModel, UserDModel } from './../domain/models/activity-log.model'
 
 import { SamlLogService } from './../services/saml-log.service'
-import { UtilService } from "./../../core/services/util.service";
+import { UtilService } from "./../../../core/services/util.service";
 
 
 @Injectable({

@@ -2,7 +2,7 @@ import { Injectable, Type } from "@angular/core"
 import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { Observable,of } from 'rxjs';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 import { ActivityLogDModel } from "./../domain/models/activity-log.model";
 import { UiLogModel } from "./../domain/models/ui-log.model";

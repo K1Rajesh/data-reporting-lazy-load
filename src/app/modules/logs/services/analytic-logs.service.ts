@@ -1,6 +1,6 @@
 import { Injectable, Type } from "@angular/core"
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http"
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { Observable, of} from 'rxjs';
 //import { LastNDaysUsersDataModel } from "../models/last-n-day-users.model"
 import { DistinctUserDModel } from "../domain/models/distinct-users.model";

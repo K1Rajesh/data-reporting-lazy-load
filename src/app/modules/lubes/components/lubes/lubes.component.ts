@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CONST_VALUES } from './../../../core/constant-reources'
+import { CONST_VALUES } from './../../../../core/constant-reources'
 
 import { LubesModel } from '../../models/lubes.model';
 import { LigModel } from '../../models/lig.model';
@@ -15,7 +15,7 @@ import { ConfigService } from './../../../features-shared//services/config.servi
 @Component({
   selector: 'app-lubes',
   templateUrl: './lubes.component.html',
-  styleUrls: ['./../../../app.component.css','./lubes.component.css'],
+  styleUrls: ['./../../../../app.component.css','./lubes.component.css'],
   providers: [SideNavModel,LigModel,SideNavService]
 })
 export class LubesComponent implements OnInit {
