@@ -1,0 +1,44 @@
+<form class="filter-form">
+    <div class="filter-form-items-container">
+          
+      <div class="filter-form-item channel-partner"
+       *ngFor="let filter of filterFormControls | keyvalue">
+
+        <button *ngFor="let selctedFilterValue of filter.value.filtersSelected"
+         (click)="optionRemoveHandler(selctedFilterValue,filter.key)">{{selctedFilterValue}}</button>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>{{ filter.key | ligHeader }}</mat-label>
+          <input type="text" matInput
+                 [formControl]="filter.value.filterControl"
+                 [matAutocomplete]="autoComplete">
+          <mat-autocomplete autoActiveFirstOption 
+          #autoComplete="matAutocomplete"
+          (optionSelected)="optionSelectedHandler($event,filter.key)">
+            <mat-option *ngFor="let option of filter.value.filterOptionsCurrent$ | async" 
+            [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+
+        <!-- <div class="filter-form-item channel-partner">
+        <mat-form-field class="example-full-width">
+          <mat-label>Channel Parnter</mat-label>
+          <input type="text" matInput
+                 [formControl]="channelParnterFilterControl"
+                 [matAutocomplete]="autoChannelPartner">
+          <mat-autocomplete autoActiveFirstOption [id]="'channelPartnerMatAutoId'"
+          #autoChannelPartner="matAutocomplete"
+          (optionSelected)="optionSelectedHandler($event,autoChannelPartner)">
+            <mat-option *ngFor="let option of channelParnterFilterOptionsCurrent$ | async" 
+            [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div> -->

@@ -1,0 +1,121 @@
+.container{
+    height: 100%;
+    padding: 20px;
+    overflow: auto;
+}
+.table-conatiner{
+    
+    height: 90%;
+    overflow: auto;
+    margin: 20px;
+
+}
+.table{
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width:100%;
+    margin-left: 10px;
+}
+
+tbody{
+    font-size: 14px;
+}
+.header-text{
+    margin-left: 30px;
+}
+th.header-data{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+}
+/* tr.row-data:hover{
+    background-color: #ddd;
+} */
+td.cell-data, th.header-data{ 
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+td.cell-data{
+    white-space: nowrap;
+}
+
+tr:nth-child(even){
+    background-color: #ccc
+}
+.pagination-number{
+    display: inline-block;
+    padding: 6px;
+    cursor: pointer;
+    font-weight: 700;
+}
+.pagination-number.active{
+    color: cornflowerblue;
+}
+.pagination-number-container{
+    width: 300px;
+    overflow: auto;
+}
+.pagination-container{
+    margin: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+
+.icon-arrow {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: transparent;
+    cursor: pointer;
+  }
+.header-content{
+    display: flex;
+}
+  
+  .icon-sort-desc {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: transparent;
+    cursor: pointer;
+    border-width: 7px 7px 0;
+    border-top-color: #fff;
+    margin-top: 2px;
+  }
+  
+  .icon-sort-asc  {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: transparent;
+    cursor: pointer;
+    border-width: 0 7px 7px;
+    border-bottom-color: #fff;
+  }
+  .icon-sort-asc:hover{
+    border-bottom-color: aqua;
+  } 
+  .icon-sort-desc:hover{
+    border-top-color: aqua;
+  }
+
+  .sort-icon{
+    display: inline-flex;
+    flex-direction:column ;
+    margin-top: 4px;
+    margin-left: 4px;
+  }
+
+
+/* -------------------filter css start --------------------------- */
+  .filter-container{
+    margin: 20px 0;
+  }
+/* -------------------filter css end --------------------------- */
