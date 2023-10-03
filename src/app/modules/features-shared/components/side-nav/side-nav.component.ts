@@ -2,6 +2,8 @@ import { Component, OnInit,OnDestroy,Input, Output,EventEmitter } from '@angular
 import { SideNavModel } from '../../models/side-nav.model';
 import { SideNavListDataModel } from '../../domain/models/side-nav.model'
 
+import { CONST_VALUES } from '../../../../core/constant-reources';
+
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
@@ -53,6 +55,9 @@ export class SideNavComponent implements OnInit, OnDestroy {
     }
     else if( navItemNameLowercase==="logs"){
       path = subNavItemName? navItemNameLowercase + '/' + subNavItemName : navItemNameLowercase
+    }
+    else if( navItemNameLowercase== CONST_VALUES.SIDENAV_ITEMS.FE_DASHBOARDS.toLowerCase()){
+      path = navItemNameLowercase
     }
     return path;
   }

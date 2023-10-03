@@ -5,6 +5,10 @@ import { DashboardContainerComponent } from './components/dashboard-container/da
 
 const dashboardRoutes: Routes = [
   {
+    path:'',
+    component: LigDashboardComponent
+  },
+  {
     path:'lig-dashboard',
     component: LigDashboardComponent
   },

@@ -17,6 +17,7 @@ export const CONST_VALUES = {
         UFILL:"UFill",
         LOGS:"Logs",
         INDEXING:"Indexing",
+        FE_DASHBOARDS:"FE-Dashboards",
         LOGOUT: "Logout"
     }
 };

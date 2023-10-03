@@ -57,10 +57,13 @@ export class SideNavModel{
         }
         if(navItem === CONST_VALUES.SIDENAV_ITEMS.LIG){
             subNavItemList = this.ligDashboardsList;
-          }
+        }
         else if(navItem === 'Logs'){
             subNavItemList = ['User Activity Log','Show distinct users', 'Reports accessed count'];
             //'Reports accessed users',,'Last 5 days users','Last 5 days reports'
+        }
+        else if(navItem === CONST_VALUES.SIDENAV_ITEMS.FE_DASHBOARDS){
+            subNavItemList = this.ligDashboardsList;
         }
         return subNavItemList
     }    

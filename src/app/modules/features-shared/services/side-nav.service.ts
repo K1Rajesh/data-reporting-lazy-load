@@ -13,6 +13,7 @@ export class SideNavService {
             [1, {id:1,name:CONST_VALUES.SIDENAV_ITEMS.HOME,hasSubMenu:false,showSubMenu:false, isEnabled:true}],
             [3, {id:3,name:CONST_VALUES.SIDENAV_ITEMS.LOGS,hasSubMenu:true,showSubMenu:false, isEnabled: true}],  //(Temp - isEnabled: true should not be on prod) for local testing
             [4, {id:4,name:CONST_VALUES.SIDENAV_ITEMS.INDEXING,hasSubMenu:false,showSubMenu:false, isEnabled: true}],  //(Temp - isEnabled: true should not be on prod) for local testing
+            [5, {id:5,name: CONST_VALUES.SIDENAV_ITEMS.FE_DASHBOARDS,hasSubMenu:true,showSubMenu:false, isEnabled: true},]
         ]);
     constructor( ){
         this.debugVar_myId = Math.random()
