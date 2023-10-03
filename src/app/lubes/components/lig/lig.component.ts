@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { LigModel } from './../../model/lig.model';
+import { LigModel } from '../../models/lig.model';
 
 
 @Component({

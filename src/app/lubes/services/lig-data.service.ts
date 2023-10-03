@@ -2,7 +2,7 @@ import { Injectable  } from "@angular/core"
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http"
 import { environment } from './../../../environments/environment';
 import { Observable, of} from 'rxjs';
-import { LigDataResponseModel } from '../model/api/lig-data-response.model'
+import { LigDataResponseModel } from '../models/api/lig-data-response.model'
 
 
 

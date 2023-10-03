@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs';
 import { LigCsvDownloadService } from './../../../services/lig-csv-download.service';
 import { LigDataService } from './../../../services/lig-data.service';
 
-import { LigDataResponseModel } from './../../../model/api/lig-data-response.model';
-import { LigDashboardTableApiHeaders, LigDashboardTableHeadersApiMapping } from './../../../model/lig-dashboard-data.model';
+import { LigDataResponseModel } from '../../../models/api/lig-data-response.model';
+import { LigDashboardTableApiHeaders, LigDashboardTableHeadersApiMapping } from '../../../models/lig-dashboard-data.model';
 
 import { UserDetailsModel } from '../../../../authorized-user/domain/models/user-details.model';
 
