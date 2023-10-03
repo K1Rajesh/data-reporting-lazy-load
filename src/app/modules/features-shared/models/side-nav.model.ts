@@ -5,8 +5,8 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { Router, ActivatedRoute } from "@angular/router"
 
 
-import { SideNavListDataModel } from '../domain/model/side-nav.model';
-import { UserDetailsIModel } from '../domain/model/user-details.model';
+import { SideNavListDataModel } from '../domain/models/side-nav.model';
+import { UserDetailsIModel } from '../domain/models/user-details.model';
 
 import { ConfigService } from "../services/config.service";
 import { AuthService } from "../../../services/auth.service";

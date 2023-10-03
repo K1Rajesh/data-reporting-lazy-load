@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { SubFeatureCardDModel } from "../domain/model/sub-feature-card-model";
+import { SubFeatureCardDModel } from "../domain/models/sub-feature-card-model";
 import { SideNavModel } from "./side-nav.model"
 
 @Injectable()

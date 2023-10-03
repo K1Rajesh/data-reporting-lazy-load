@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from  '@angular/core';
 
-import { MonthSelectPopupModalModel } from './../../domain/model/month-select-popup-modal.model'
+import { MonthSelectPopupModalModel } from '../../domain/models/month-select-popup-modal.model'
 
 @Component({
   selector: 'app-month-select-popup-modal',

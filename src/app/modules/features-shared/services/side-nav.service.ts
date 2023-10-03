@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SideNavListDTModel } from './../domain/model/side-nav.model';
+import { SideNavListDTModel } from '../domain/models/side-nav.model';
 import { CONST_VALUES } from './../../../core/constant-reources';
 
 

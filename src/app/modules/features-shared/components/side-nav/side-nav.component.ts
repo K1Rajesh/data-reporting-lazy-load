@@ -1,6 +1,6 @@
 import { Component, OnInit,OnDestroy,Input, Output,EventEmitter } from '@angular/core';
 import { SideNavModel } from '../../models/side-nav.model';
-import { SideNavListDataModel } from './../../domain/model/side-nav.model'
+import { SideNavListDataModel } from '../../domain/models/side-nav.model'
 
 @Component({
   selector: 'app-side-nav',

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable} from '@angular/core';
 import { Observable,of } from 'rxjs';
-import { ConfigModel } from './../domain/model/config.model';
+import { ConfigModel } from '../domain/models/config.model';
 import { take } from 'rxjs/operators'
 
 @Injectable({
