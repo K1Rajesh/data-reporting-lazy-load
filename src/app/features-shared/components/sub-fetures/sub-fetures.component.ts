@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SubFeatureCardDModel } from './../../domain/model/sub-feature-card-model';
-import { SubFeatureCardModel } from './../../model/sub-feature-card.model'
+import { SubFeatureCardModel } from '../../models/sub-feature-card.model'
 
 
 @Component({

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 
-import { SideNavModel } from './../../features-shared/model/side-nav.model';
+import { SideNavModel } from '../../features-shared/models/side-nav.model';
 
 import { ConfigService } from './../../features-shared//services/config.service';
 

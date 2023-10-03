@@ -5,7 +5,7 @@ import { CONST_VALUES } from './../../../core/constant-reources'
 import { RetailModel } from './../../model/retail.model';
 import { UfillModel } from './../../model/ufill.model';
 
-import { SideNavModel } from './../../../features-shared/model/side-nav.model';
+import { SideNavModel } from '../../../features-shared/models/side-nav.model';
 import { SideNavService } from './../../../features-shared/services/side-nav.service'
 
 

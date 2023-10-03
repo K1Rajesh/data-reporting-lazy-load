@@ -5,16 +5,16 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { Router, ActivatedRoute } from "@angular/router"
 
 
-import { SideNavListDataModel } from './../domain/model/side-nav.model';
-import { UserDetailsIModel } from './../domain/model/user-details.model';
+import { SideNavListDataModel } from '../domain/model/side-nav.model';
+import { UserDetailsIModel } from '../domain/model/user-details.model';
 
-import { ConfigService } from "./../services/config.service";
-import { AuthService } from "./../../services/auth.service";
-import { SideNavService } from "./../services/side-nav.service";
+import { ConfigService } from "../services/config.service";
+import { AuthService } from "../../services/auth.service";
+import { SideNavService } from "../services/side-nav.service";
 
-import { CONST_VALUES } from './../../core/constant-reources';
+import { CONST_VALUES } from '../../core/constant-reources';
 
-import { SamlLogService } from "./../../logs/services/saml-log.service";
+import { SamlLogService } from "../../logs/services/saml-log.service";
 
 import { UserDetailsModel } from "../../authorized-user/domain/models/user-details.model";
 

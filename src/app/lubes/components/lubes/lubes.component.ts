@@ -5,7 +5,7 @@ import { CONST_VALUES } from './../../../core/constant-reources'
 import { LubesModel } from './../../model/lubes.model';
 import { LigModel } from './../../model/lig.model';
 
-import { SideNavModel } from './../../../features-shared/model/side-nav.model';
+import { SideNavModel } from '../../../features-shared/models/side-nav.model';
 import { SideNavService } from './../../../features-shared/services/side-nav.service'
 
 
