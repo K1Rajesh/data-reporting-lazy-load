@@ -2,8 +2,8 @@ import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable,BehaviorSubject } from 'rxjs';
 import { environment } from './../../environments/environment'
-import { AuthRespModel } from './../domain/model/auth-response.model'
-import { UserDetails } from './../domain/model/user-details.model'
+import { AuthRespModel } from '../domain/models/auth-response.model'
+import { UserDetails } from '../domain/models/user-details.model'
 
 @Injectable({
     providedIn:'root'

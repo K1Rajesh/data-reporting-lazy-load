@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-import { AuthService} from './../services/auth.service'
+import { AuthService} from '../services/auth.service'
 
-import { AuthRespModel } from '../domain/model/auth-response.model';
-import { UserDetailsModel } from './../authorized-user/domain/model/user-details.model'
+import { AuthRespModel } from '../domain/models/auth-response.model';
+import { UserDetailsModel } from '../authorized-user/domain/model/user-details.model'
 
 
 
