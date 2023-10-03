@@ -39,7 +39,7 @@ export class LigCsvDownloadComponent implements OnInit, OnDestroy {
     const userEmail = this.userDetailsModel.userDetails?.nameID! //gives email address
     const ligDataReqPayLoad = {
       "email":userEmail,
-      "month":duration.month
+      "month":duration?.month || "2023-09"
     }
     this.subsList.push(
       this.ligDataService.getLigData(ligDataReqPayLoad).subscribe(
