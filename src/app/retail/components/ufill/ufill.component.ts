@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { UfillModel } from '../../model/ufill.model';
+import { UfillModel } from '../../models/ufill.model';
 
 @Component({
   selector: 'app-ufill',

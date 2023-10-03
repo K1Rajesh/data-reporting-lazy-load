@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { CONST_VALUES } from './../../../core/constant-reources'
 
-import { RetailModel } from './../../model/retail.model';
-import { UfillModel } from './../../model/ufill.model';
+import { RetailModel } from '../../models/retail.model';
+import { UfillModel } from '../../models/ufill.model';
 
 import { SideNavModel } from '../../../features-shared/models/side-nav.model';
 import { SideNavService } from './../../../features-shared/services/side-nav.service'

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SideNavModel } from '../../features-shared/models/side-nav.model';
 
-import { ConfigService } from './../../features-shared//services/config.service';
+import { ConfigService } from '../../features-shared/services/config.service';
 
 @Injectable()
 export class UfillModel{
