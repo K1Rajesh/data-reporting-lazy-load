@@ -13,6 +13,8 @@ import { LigDashboardFilterComponent } from './components/lig-dashboard-filter/l
 import { FEDashBoardsRoutingModule} from './fe-dashboards-routing.module';
 
 //import { SharedFeaturesModule} from './../shared-features/shared-features.module';
+import { FeaturesSharedModule } from './../features-shared/features-shared.module'
+
 import { DashboardContainerComponent } from './components/dashboard-container/dashboard-container.component'
 
 
@@ -32,6 +34,7 @@ import { DashboardContainerComponent } from './components/dashboard-container/da
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    FeaturesSharedModule
     //SharedFeaturesModule
   ],
   exports:[
