@@ -93,7 +93,8 @@ export const LigDashboardTableHeadersApiMapping: Map<string,string> = new Map([
     ['state','LIG State' ],
     ['txn_count','Coupon count'],
     ['txn_amount','Coupon amount' ],
-    ['PRODUCT_BRAND','LIG Product Brand']
+    ['PRODUCT_BRAND','LIG Product Brand'],
+    ['month','Financial Month']
 ])
 
 

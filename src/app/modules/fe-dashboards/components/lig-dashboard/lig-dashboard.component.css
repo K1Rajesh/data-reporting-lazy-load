@@ -3,12 +3,9 @@
     padding: 20px;
     overflow: auto;
 }
-.table-conatiner{
-    
+.table-container{
     height: 90%;
     overflow: auto;
-    margin: 20px;
-
 }
 .table{
     box-shadow: 0 0 5px rgba(0,0,0,0.3);

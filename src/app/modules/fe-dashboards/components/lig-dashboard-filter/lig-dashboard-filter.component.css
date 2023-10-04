@@ -9,3 +9,15 @@
   display: flex;
   flex-direction: column;
 }
+.filter-container{
+  height: 0px;
+  overflow: hidden;
+  transition: height 500ms;
+}
+.filter-container.show{
+  height: auto;
+}
+.show-filter-button-container{
+  display: flex;
+  flex-direction: row-reverse;
+}

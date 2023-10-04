@@ -61,7 +61,7 @@ export class LigDashboardFilterModel {
     /* ------------------------ filter related propertires start --------------------- */
 
     private filtersApplied : LigDataFilterIModel;
-
+    public isShowFilter: boolean = false;
   
     constructor(private ligDashBoardModel2 : LigDashboardModel2) {
       this.filtersApplied = { "month": "2023-08"}

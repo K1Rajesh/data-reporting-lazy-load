@@ -60,6 +60,12 @@ export class LigDashboardFilterComponent implements OnInit,OnChanges, OnDestroy 
   get filtersAvailable():Array<string>{
     return this.ligDashboardFilterModel.filtersAvailable;
   }
+  get isShowFilter():boolean{
+    return this.ligDashboardFilterModel.isShowFilter;
+  }
+  set isShowFilter(val:boolean) {
+    this.ligDashboardFilterModel.isShowFilter=val;
+  }
 
 
   ngOnInit(): void {
