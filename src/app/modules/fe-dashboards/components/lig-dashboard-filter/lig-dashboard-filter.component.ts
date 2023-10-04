@@ -1,14 +1,10 @@
 import { Component, OnInit,OnChanges, OnDestroy, Input,SimpleChanges } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
 
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-
 
 import { LigDashboardFilterModel } from '../../domain/models/lig-dashboard-filter.model';
 
 import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
-
 
 @Component({
   selector: 'app-lig-dashboard-filter',
@@ -28,37 +24,8 @@ export class LigDashboardFilterComponent implements OnInit,OnChanges, OnDestroy 
     this.ligDashboardFilterModel.filtersUniqueValues=val;
   }
 
-  get channelParnterFilterControl():FormControl{
-    return this.ligDashboardFilterModel.channelParnterFilterControl
-  }
-  get channelParnterFilterOptionsCurrent$():Observable<string[]>{
-    return this.ligDashboardFilterModel.channelParnterFilterOptionsCurrent$
-  }
-  get userPersonaFilterControl():FormControl{
-    return this.ligDashboardFilterModel.userPersonaFilterControl
-  }
-  get userPersonaFilterOptionsCurrent$():Observable<string[]>{
-    return this.ligDashboardFilterModel.userPersonaFilterOptionsCurrent$
-  }
-  get talukaFilterControl():FormControl{
-    return this.ligDashboardFilterModel.talukaFilterControl
-  }
-  get talukaFilterOptionsCurrent$():Observable<string[]>{
-    return this.ligDashboardFilterModel.talukaFilterOptionsCurrent$
-  }
-
-  get biTerriotoaryFilterControl():FormControl{
-    return this.ligDashboardFilterModel.biTerriotoaryFilterControl
-  }
-  get biTerriotoaryFilterOptionsCurrent$():Observable<string[]>{
-    return this.ligDashboardFilterModel.biTerriotoaryFilterOptionsCurrent$
-  }
-
   get filterFormControls(): Map<string , FiterControlIModel>{
     return this.ligDashboardFilterModel.filterFormControls
-  }
-  get filtersAvailable():Array<string>{
-    return this.ligDashboardFilterModel.filtersAvailable;
   }
   get isShowFilter():boolean{
     return this.ligDashboardFilterModel.isShowFilter;

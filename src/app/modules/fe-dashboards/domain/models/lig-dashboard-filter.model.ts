@@ -1,15 +1,13 @@
 import { Injectable } from "@angular/core";
 import {FormControl} from '@angular/forms';
 
-import { Observable , Subscription, of } from 'rxjs';
+import { Observable , Subscription } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
-
 import { LigDashboardModel2} from './lig-dashboard2.model'
 
-import { FilterIModel } from './../../models/api/lig-data-reponse.model';
 import { LigDataFilterIModel } from "../../models/api/lig-data-request.model";
 import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
 
@@ -36,25 +34,6 @@ export class LigDashboardFilterModel {
     ]
 
     /* ------------------------ filter related propertires start --------------------- */
-    public channelParnterFilterControl = new FormControl('');
-    public channelParnterFilterOptionsAll: string[] = [];
-    public channelParnterFilterOptionsCurrent$: Observable<string[]> = new Observable<string[]>();
-
-    public userPersonaFilterControl = new FormControl('');
-    public userPersonaFilterOptionsAll: string[] = [];
-    public userPersonaFilterOptionsCurrent$: Observable<string[]> = new Observable<string[]>();
-
-    public talukaFilterControl = new FormControl('');
-    public talukaFilterOptionsAll: string[] = [];
-    public talukaFilterOptionsCurrent$: Observable<string[]> = new Observable<string[]>();
-
-    public stateFilterControl = new FormControl('');
-    public stateFilterOptionsAll: string[] = [];
-    public stateFilterOptionsCurrent$: Observable<string[]> = new Observable<string[]>();
-
-    public biTerriotoaryFilterControl = new FormControl('');
-    public biTerriotoaryFilterOptionsAll: string[] = [];
-    public biTerriotoaryFilterOptionsCurrent$: Observable<string[]> = new Observable<string[]>();
 
     public filterFormControls : Map<string , FiterControlIModel> = new Map<string , FiterControlIModel>();
 
@@ -171,13 +150,8 @@ export class LigDashboardFilterModel {
       });
     }
     public formSubmitHandler():void{
-      const filterObj: LigDataFilterIModel ={
-        "month": "2023-08",
-        user_persona : this.userPersonaFilterControl.value
-      }
-      
-      console.log("User Persona Filter Value", filterObj )
-      this.initateGetLigDataApiCall(filterObj);
+
+
     }
     public destroy():void{
       this.subsList.forEach((sub)=>sub.unsubscribe())
