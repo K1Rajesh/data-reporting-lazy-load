@@ -53,6 +53,9 @@ export class LigDashboardFilterComponent implements OnInit,OnChanges, OnDestroy 
   public optionRemoveHandler(selctedFilterValue:string,filterKey:string){
     this.ligDashboardFilterModel.optionRemoveHandler(selctedFilterValue,filterKey)
   }
+  public asIsOrder(a:any,b:any){
+    return 1;
+  }
   ngOnDestroy(): void {
   }
 

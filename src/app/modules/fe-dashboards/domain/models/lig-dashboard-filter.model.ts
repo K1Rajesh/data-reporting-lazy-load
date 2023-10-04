@@ -21,16 +21,17 @@ export class LigDashboardFilterModel {
     public filtersUniqueValues : any;
 
     public filtersAvailable : Array<string> = [
-      "user_persona",
-      "taluka",
-      "sap_cc_number",
-      "SALES_GROUP_NAME",
-      "SALES_OFFICE_NAME",
-      "state",
-      "district",
-      "PRODUCT_NAME",
-      "PRODUCT_CODE",
-      "PRODUCT_BRAND",
+      'month',
+      'sap_cc_number',
+      'user_persona',
+      'SALES_GROUP_NAME' ,
+      'SALES_OFFICE_NAME',
+      'taluka',
+      'district',
+      'state',
+      'PRODUCT_CODE',
+      'PRODUCT_NAME',
+      'PRODUCT_BRAND',
     ]
 
     /* ------------------------ filter related propertires start --------------------- */

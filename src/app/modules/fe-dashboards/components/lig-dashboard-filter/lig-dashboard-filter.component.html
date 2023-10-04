@@ -7,7 +7,7 @@
       <div class="filter-form-items-container">
             
         <div class="filter-form-item channel-partner"
-         *ngFor="let filter of filterFormControls | keyvalue">
+         *ngFor="let filter of filterFormControls | keyvalue: asIsOrder">
   
           <button *ngFor="let selctedFilterValue of filter.value.filtersSelected"
            (click)="optionRemoveHandler(selctedFilterValue,filter.key)">{{selctedFilterValue}}</button>
@@ -32,20 +32,3 @@
   
   </div>
 </div>
-
-        <!-- <div class="filter-form-item channel-partner">
-        <mat-form-field class="example-full-width">
-          <mat-label>Channel Parnter</mat-label>
-          <input type="text" matInput
-                 [formControl]="channelParnterFilterControl"
-                 [matAutocomplete]="autoChannelPartner">
-          <mat-autocomplete autoActiveFirstOption [id]="'channelPartnerMatAutoId'"
-          #autoChannelPartner="matAutocomplete"
-          (optionSelected)="optionSelectedHandler($event,autoChannelPartner)">
-            <mat-option *ngFor="let option of channelParnterFilterOptionsCurrent$ | async" 
-            [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-      </div> -->
