@@ -84,14 +84,14 @@ export class LigDashboardFilterModel {
         if(tempfilterFormControl){
           tempfilterFormControl.filterOptionsCurrent$ = tempfilterFormControl.filterControl?.valueChanges.pipe(
             startWith(''),
-            map(value => this._filter(tempfilterFormControl.filterOptionsAll , value || '')),
+            map(value => this._filter(tempfilterFormControl.filterOptionsAll , tempfilterFormControl.filtersSelected , value || '')),
           )
         }
 
       })
 
     }
-    private _filter( filterData:Array<string> , filterValue: string): string[] {
+    private _filter( filterData:Array<string> , filtersSelected:Array<string> ,filterValue: string): string[] {
       const filterValueLower = filterValue.toLowerCase();
       if(!filterData){
         return [];
@@ -100,7 +100,10 @@ export class LigDashboardFilterModel {
         if(!filterValue){
           return filterData;
         }
-        return filterData.filter(option => option.toLowerCase().startsWith(filterValueLower));
+        return filterData.filter(option => 
+          {
+            return option.toLowerCase().startsWith(filterValueLower) && !filtersSelected.includes(option);
+          });
       }
       
     }
