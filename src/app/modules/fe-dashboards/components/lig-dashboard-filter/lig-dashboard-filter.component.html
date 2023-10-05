@@ -9,11 +9,16 @@
         <div class="filter-form-item channel-partner"
          *ngFor="let filter of filterFormControls | keyvalue: asIsOrder">
   
-          <button *ngFor="let selctedFilterValue of filter.value.filtersSelected"
-           (click)="optionRemoveHandler(selctedFilterValue,filter.key)">{{selctedFilterValue}}</button>
-  
+         <mat-label>{{ filter.key | ligHeader }}</mat-label>
           <mat-form-field class="example-full-width">
-            <mat-label>{{ filter.key | ligHeader }}</mat-label>
+            
+            <div class="selected-filter-item-values-container" *ngIf="filter.value.filtersSelected.length > 0">
+              <ng-container *ngFor="let selctedFilterValue of filter.value.filtersSelected">
+                <app-eui-badge [displayName]="selctedFilterValue" 
+                (click)="optionRemoveHandler(selctedFilterValue,filter.key)"></app-eui-badge>
+              </ng-container>
+            </div>
+
             <input type="text" matInput
                    [formControl]="filter.value.filterControl"
                    [matAutocomplete]="autoComplete">
