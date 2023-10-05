@@ -21,7 +21,7 @@ export class LigDashboardFilterModel {
     public filtersUniqueValues : any;
 
     public filtersAvailable : Array<string> = [
-      'month',
+      // 'month',
       'sap_cc_number',
       'user_persona',
       'SALES_GROUP_NAME' ,
@@ -147,7 +147,7 @@ export class LigDashboardFilterModel {
     }
     public mapFilterControlsToFilter(){
       this.filterFormControls.forEach((value,key) => {
-        this.filtersApplied[key]=value.filtersSelected[0];
+        this.filtersApplied[key]=value.filtersSelected;
       });
     }
     public formSubmitHandler():void{
