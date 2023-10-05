@@ -13,10 +13,10 @@
           <mat-form-field class="example-full-width">
             
             <div class="selected-filter-item-values-container" *ngIf="filter.value.filtersSelected.length > 0">
-              <ng-container *ngFor="let selctedFilterValue of filter.value.filtersSelected">
-                <app-eui-badge [displayName]="selctedFilterValue" 
+              <div class="eui-badge-container"  *ngFor="let selctedFilterValue of filter.value.filtersSelected">
+                <app-eui-badge  [displayName]="selctedFilterValue" 
                 (click)="optionRemoveHandler(selctedFilterValue,filter.key)"></app-eui-badge>
-              </ng-container>
+              </div>
             </div>
 
             <input type="text" matInput

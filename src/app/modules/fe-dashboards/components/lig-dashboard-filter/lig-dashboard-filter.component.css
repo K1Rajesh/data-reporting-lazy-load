@@ -24,3 +24,6 @@
   display: flex;
   flex-direction: row-reverse;
 }
+.eui-badge-container{
+  margin: 2px;
+}
