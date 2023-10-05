@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 
 import { Observable , Subscription} from 'rxjs';
 
-import { LigDataService } from './../../services/lig-data.service';
+import { FELigDataService } from '../../services/fe-lig-data.service';
 
 
 import { LigDataRequestIModel,LigDataFilterIModel } from './../../models/api/lig-data-request.model';
@@ -29,7 +29,7 @@ export class LigDashboardModel2 {
     public ligDataServiceLigData$ : Observable<LigDataResponseIModel> | undefined = undefined;
     
 
-    constructor(private ligDataService:LigDataService) {
+    constructor(private ligDataService:FELigDataService) {
         this.headerColumns  = LigDashboardTableViewHeaders
     }
     init(){
@@ -42,10 +42,11 @@ export class LigDashboardModel2 {
     public initateGetLigDataCall(filters:LigDataFilterIModel){
       const payLoad:LigDataRequestIModel = {
         "user": {
-          //"email": "abhisekdatta@corp.bharatpetroleum.com"
-          "email": "sonawaneug@corp.bharatpetroleum.com"
+          "email": "abhisekdatta@corp.bharatpetroleum.com"
+          //"email": "sonawaneug@corp.bharatpetroleum.com",
         },
-        filters: filters
+        filters: filters,
+        "provideData":true
       }
       this.ligDataServiceLigData$ = this.ligDataService.getLigData(payLoad);
       this.subscribeGetLigDataCall();

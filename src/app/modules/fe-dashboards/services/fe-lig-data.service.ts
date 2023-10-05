@@ -4,8 +4,8 @@ import { Observable, of} from 'rxjs';
 
 
 import { environment } from '../../../../environments/environment';
-import { LigDataRequestIModel, SAMPLE_LIG_DATA_REQUEST } from './../models/api/lig-data-request.model'
-import { LigDataResponseIModel } from './../models/api/lig-data-reponse.model';
+import { LigDataRequestIModel, SAMPLE_LIG_DATA_REQUEST } from '../models/api/lig-data-request.model'
+import { LigDataResponseIModel } from '../models/api/lig-data-reponse.model';
 
 
 
@@ -14,7 +14,7 @@ import { LigDataResponseIModel } from './../models/api/lig-data-reponse.model';
 @Injectable({
     providedIn:'root'
 })
-export class LigDataService{
+export class FELigDataService{
     httpOptions = {};
     constructor(private httpClient:HttpClient){
         this. httpOptions = {
@@ -43,7 +43,7 @@ export class LigDataService{
         //  "Bi_Sales_Area":"Rourkela Lubes"}
 
 
-        return this.httpClient.post<any>("http://10.29.2.4:8001/pukipy/lig_data22", payLoad )
+        return this.httpClient.post<any>("http://10.29.2.4:8001/pukipy/lig_data222", payLoad )
     }
 
 
