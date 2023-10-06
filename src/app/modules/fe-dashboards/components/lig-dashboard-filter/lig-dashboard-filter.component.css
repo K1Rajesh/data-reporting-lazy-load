@@ -25,5 +25,16 @@
   flex-direction: row-reverse;
 }
 .eui-badge-container{
+  display: inline-flex;
   margin: 2px;
+}
+.filter-control-label{
+
+    line-height: 1.5;
+    color: #1a1c21;
+    font-weight: 600;
+    margin: 5px 0 0 5px;
+}
+.show-filter-button-container{
+  margin-bottom:10px;
 }

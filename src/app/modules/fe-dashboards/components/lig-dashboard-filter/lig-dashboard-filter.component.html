@@ -8,8 +8,10 @@
             
         <div class="filter-form-item channel-partner"
          *ngFor="let filter of filterFormControls | keyvalue: asIsOrder">
-  
-         <mat-label>{{ filter.key | ligHeader }}</mat-label>
+        
+         <div>
+            <mat-label class="filter-control-label">{{ filter.key | ligHeader }}</mat-label>
+         </div>
           <mat-form-field class="example-full-width">
             
             <div class="selected-filter-item-values-container" *ngIf="filter.value.filtersSelected.length > 0">
