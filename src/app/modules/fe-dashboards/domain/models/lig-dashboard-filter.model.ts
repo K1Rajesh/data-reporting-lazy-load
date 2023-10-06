@@ -98,7 +98,7 @@ export class LigDashboardFilterModel {
       }
       else{
         if(!filterValue){
-          return filterData;
+          return filterData.filter(option=>!filtersSelected.includes(option));
         }
         return filterData.filter(option => 
           {
