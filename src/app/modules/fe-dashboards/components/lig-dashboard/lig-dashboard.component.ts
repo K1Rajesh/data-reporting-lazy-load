@@ -34,9 +34,6 @@ export class LigDashboardComponent implements OnInit , OnDestroy {
   get currentPageDataSource() : Array<LigDashboardDataModel> | undefined {
     return this.ligDashboardModel.currentPageDataSource
   }
-  get isShowTableLoader():boolean{
-    return this.ligDashboardModel.isShowTableLoader
-  }
   get filters():any{
     return this.ligDashboardModel.filters;
   }

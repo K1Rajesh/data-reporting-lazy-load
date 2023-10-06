@@ -1,4 +1,11 @@
 <div class="container">
+    <div>
+        <h2> LIG Dashboard </h2>
+        <button (click)="getSourceDataclickHandler()">Get Data</button>
+        <ng-container *ngIf="isShowTableLoader">Loading...</ng-container>
+    </div>
+
+
     <app-all-selected-filters-display></app-all-selected-filters-display>
     <app-lig-dashboard></app-lig-dashboard>
 </div>
