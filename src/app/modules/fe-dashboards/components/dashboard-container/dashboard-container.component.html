@@ -5,7 +5,18 @@
         <ng-container *ngIf="isShowTableLoader">Loading...</ng-container>
     </div>
 
+    <div>
+        <app-all-selected-filters-display></app-all-selected-filters-display>
+    </div>
 
-    <app-all-selected-filters-display></app-all-selected-filters-display>
-    <app-lig-dashboard></app-lig-dashboard>
+    <div>
+        <div class="filter-container">
+            <app-lig-dashboard-filter></app-lig-dashboard-filter>
+        </div>    
+    </div>
+    <div>
+        <app-lig-dashboard></app-lig-dashboard>
+    </div>
+
+
 </div>

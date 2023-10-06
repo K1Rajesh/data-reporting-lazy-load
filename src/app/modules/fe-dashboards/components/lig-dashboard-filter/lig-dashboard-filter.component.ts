@@ -12,16 +12,12 @@ import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
   styleUrls: ['./lig-dashboard-filter.component.css'],
   providers: [LigDashboardFilterModel]
 })
-export class LigDashboardFilterComponent implements OnInit,OnChanges, OnDestroy {
+export class LigDashboardFilterComponent implements OnInit, OnDestroy {
 
   constructor(private ligDashboardFilterModel : LigDashboardFilterModel) { }
 
-  @Input() 
   get filters():any{
     return this.ligDashboardFilterModel.filtersUniqueValues;
-  }
-  set filters(val:any){
-    this.ligDashboardFilterModel.filtersUniqueValues=val;
   }
 
   get filterFormControls(): Map<string , FiterControlIModel>{
@@ -37,12 +33,6 @@ export class LigDashboardFilterComponent implements OnInit,OnChanges, OnDestroy 
 
   ngOnInit(): void {
     this.ligDashboardFilterModel.init();
-  }
-  ngOnChanges(changes: SimpleChanges):void{
-    if(changes.filters){
-      this.ligDashboardFilterModel.setFilterValues();
-    }
-    
   }
   public formSubmitHandler():void {
     this.ligDashboardFilterModel.formSubmitHandler()

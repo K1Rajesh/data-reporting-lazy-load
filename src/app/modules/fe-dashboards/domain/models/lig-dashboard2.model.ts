@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable , Subscription} from 'rxjs';
 
 import { FELigDataService } from '../../services/fe-lig-data.service';
+import { LigFormFilterControlService} from './../../services/lig-form-filter-controls.service'
 
 
 import { LigDataRequestIModel,LigDataFilterIModel } from './../../models/api/lig-data-request.model';
@@ -29,7 +30,8 @@ export class LigDashboardModel2 {
     public ligDataServiceLigData$ : Observable<LigDataResponseIModel> | undefined = undefined;
     
 
-    constructor(private ligDataService:FELigDataService) {
+    constructor(private ligDataService:FELigDataService, 
+      private ligFormFilterControlService:LigFormFilterControlService) {
         this.headerColumns  = LigDashboardTableViewHeaders
     }
     init(){
@@ -62,7 +64,7 @@ export class LigDashboardModel2 {
                     this.initDataSource(ligData.data)
                   }       
                   if(ligData.filters){
-                    this.filters = ligData.filters
+                    this.ligFormFilterControlService.updateFilters(ligData.filters);
                   }
                 }
               }, 

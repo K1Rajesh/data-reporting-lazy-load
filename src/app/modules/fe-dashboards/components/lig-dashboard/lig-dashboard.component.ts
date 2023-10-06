@@ -9,7 +9,7 @@ import { LigDashboardModel2 } from '../../domain/models/lig-dashboard2.model'
   selector: 'app-lig-dashboard',
   templateUrl: './lig-dashboard.component.html',
   styleUrls: ['./lig-dashboard.component.css'],
-  providers: [LigDashboardModel2]
+  providers: []
 })
 export class LigDashboardComponent implements OnInit , OnDestroy {
 

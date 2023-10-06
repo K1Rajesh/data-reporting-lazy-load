@@ -11,6 +11,8 @@ import { LigDashboardModel2} from './lig-dashboard2.model'
 import { LigDataFilterIModel } from "../../models/api/lig-data-request.model";
 import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
 
+import { LigFormFilterControlService} from './../../services/lig-form-filter-controls.service'
+
 
 
 @Injectable()
@@ -43,13 +45,21 @@ export class LigDashboardFilterModel {
     private filtersApplied : LigDataFilterIModel;
     public isShowFilter: boolean = false;
   
-    constructor(private ligDashBoardModel2 : LigDashboardModel2) {
+    constructor(private ligDashBoardModel2 : LigDashboardModel2,
+       private ligFormFilterControlService:LigFormFilterControlService) {
       this.filtersApplied = { "month": "2023-08"}
     }
     init(){
       //this.subscribeLigData();
       //this.subscribeFilterControlValueChanges();
+      this.subscribeFilterValues()
       this.initFilterFormControls();
+    }
+    public subscribeFilterValues():void{
+      this.ligFormFilterControlService.filters$.subscribe((filters)=>{
+        this.filtersUniqueValues = filters;
+        this.setFilterValues();
+      });
     }
     public initFilterFormControls(): void {
       this.filtersAvailable.forEach(filter=>{
