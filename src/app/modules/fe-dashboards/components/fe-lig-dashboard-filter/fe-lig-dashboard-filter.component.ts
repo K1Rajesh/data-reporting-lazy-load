@@ -2,19 +2,19 @@ import { Component, OnInit,OnChanges, OnDestroy, Input,SimpleChanges } from '@an
 
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
-import { LigDashboardFilterModel } from '../../domain/models/lig-dashboard-filter.model';
+import { FELigDashboardFilterModel } from '../../domain/models/fe-lig-dashboard-filter.model';
 
 import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
 
 @Component({
-  selector: 'app-lig-dashboard-filter',
-  templateUrl: './lig-dashboard-filter.component.html',
-  styleUrls: ['./lig-dashboard-filter.component.css'],
-  providers: [LigDashboardFilterModel]
+  selector: 'app-fe-lig-dashboard-filter',
+  templateUrl: './fe-lig-dashboard-filter.component.html',
+  styleUrls: ['./fe-lig-dashboard-filter.component.css'],
+  providers: [FELigDashboardFilterModel]
 })
-export class LigDashboardFilterComponent implements OnInit, OnDestroy {
+export class FELigDashboardFilterComponent implements OnInit, OnDestroy {
 
-  constructor(private ligDashboardFilterModel : LigDashboardFilterModel) { }
+  constructor(private ligDashboardFilterModel : FELigDashboardFilterModel) { }
 
   get filters():any{
     return this.ligDashboardFilterModel.filtersUniqueValues;

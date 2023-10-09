@@ -11,12 +11,12 @@ import { LigDashboardModel2} from './lig-dashboard2.model'
 import { LigDataFilterIModel } from "../../models/api/lig-data-request.model";
 import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
 
-import { LigFormFilterControlService} from './../../services/lig-form-filter-controls.service'
+import { LigFormFilterControlService} from '../../services/lig-form-filter-controls.service'
 
 
 
 @Injectable()
-export class LigDashboardFilterModel {
+export class FELigDashboardFilterModel {
 
     private subsList : Array<Subscription> = new Array<Subscription>();
 

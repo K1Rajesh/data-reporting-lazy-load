@@ -8,7 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { LigDashboardComponent } from './components/lig-dashboard/lig-dashboard.component';
 import { LigHeaderPipe } from './components/lig-dashboard/lig-header.pipe';
-import { LigDashboardFilterComponent } from './components/lig-dashboard-filter/lig-dashboard-filter.component';
+import { FELigDashboardFilterComponent } from './components/fe-lig-dashboard-filter/fe-lig-dashboard-filter.component';
 
 import { FEDashBoardsRoutingModule} from './fe-dashboards-routing.module';
 
@@ -25,7 +25,7 @@ import { DashboardContainerComponent } from './components/dashboard-container/da
   declarations: [
     LigDashboardComponent,
     LigHeaderPipe,
-    LigDashboardFilterComponent,
+    FELigDashboardFilterComponent,
     DashboardContainerComponent
   ],
   imports: [
