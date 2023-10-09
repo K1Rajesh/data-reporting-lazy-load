@@ -139,7 +139,11 @@ export class LigDashboardFilterModel {
       this.mapFilterControlsToFilter();
       //
       this.initateGetLigDataApiCall(this.filtersApplied);
-
+      //
+      if(this.filtersApplied){
+        this.ligFormFilterControlService.emitSelectedFilters(this.filtersApplied)
+      }
+      
     }
     public removeNewFilter(filterKey:string,filterValue:string): void{
       // if(this.filtersApplied[filterId]){
