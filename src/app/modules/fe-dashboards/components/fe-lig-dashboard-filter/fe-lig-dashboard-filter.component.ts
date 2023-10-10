@@ -14,6 +14,14 @@ import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
 })
 export class FELigDashboardFilterComponent implements OnInit, OnDestroy {
 
+  @Input() 
+  get dynamicLoader():string | undefined{
+    return this.ligDashboardFilterModel.dynamicLoader;
+  }
+  set dynamicLoader(val:string | undefined){
+    this.ligDashboardFilterModel.dynamicLoader=val;
+  }
+
   constructor(private ligDashboardFilterModel : FELigDashboardFilterModel) { }
 
   get filters():any{
@@ -28,6 +36,10 @@ export class FELigDashboardFilterComponent implements OnInit, OnDestroy {
   }
   set isShowFilter(val:boolean) {
     this.ligDashboardFilterModel.isShowFilter=val;
+  }
+
+  get isKibanaLayout(){
+    return this.ligDashboardFilterModel.KIBANA_DASHBOARD
   }
 
 
@@ -47,6 +59,7 @@ export class FELigDashboardFilterComponent implements OnInit, OnDestroy {
     return 1;
   }
   ngOnDestroy(): void {
+    this.ligDashboardFilterModel.destroy();
   }
 
 }

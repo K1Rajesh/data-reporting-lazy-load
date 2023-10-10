@@ -1,8 +1,8 @@
 <div class="filter-conatiner">
-  <div class="show-filter-button-container">
+  <div *ngIf=!isKibanaLayout class="show-filter-button-container">
       <button class="Kibana-btn show-hide-filter" (click)="isShowFilter = !isShowFilter"> {{ isShowFilter ? 'Hide Filter' : 'Show Filter' }}</button>
   </div>
-  <div class="filter-container" [ngClass]="{'show':isShowFilter}">
+  <div class="filter-container" [ngClass]="{'show':isShowFilter || isKibanaLayout}">
     <form class="filter-form">
       <div class="filter-form-items-container">
             

@@ -13,7 +13,7 @@ import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
 
 import { LigFormFilterControlService} from '../../services/lig-form-filter-controls.service'
 
-
+import { CONST_VALUES } from "../../../../core/constant-reources";
 
 @Injectable()
 export class FELigDashboardFilterModel {
@@ -23,7 +23,8 @@ export class FELigDashboardFilterModel {
     public filtersUniqueValues : any;
 
     public filtersAvailable : Array<string> = [
-      // 'month',
+      'FinancialYear',
+      'month',
       'sap_cc_number',
       'user_persona',
       'SALES_GROUP_NAME' ,
@@ -44,16 +45,26 @@ export class FELigDashboardFilterModel {
 
     private filtersApplied : LigDataFilterIModel;
     public isShowFilter: boolean = false;
+    public dynamicLoader:string | undefined = undefined;
+    public KIBANA_DASHBOARD = CONST_VALUES.DYNAMIC_LOADER_ID.KIBANA_DASHBOARD
+    public isKibanaLayout:boolean = false;
   
     constructor(private ligDashBoardModel2 : LigDashboardModel2,
        private ligFormFilterControlService:LigFormFilterControlService) {
-      this.filtersApplied = { "month": "2023-08"}
+      this.filtersApplied = { "month": "2023-08",'FinancialYear':'2023-2024'}
     }
     init(){
       //this.subscribeLigData();
       //this.subscribeFilterControlValueChanges();
       this.subscribeFilterValues()
       this.initFilterFormControls();
+      this.setIsKibanaLayout();
+      if(this.isKibanaLayout){
+        this.initateGetLigDataApiCall(this.filtersApplied,false);
+      }
+    }
+    public setIsKibanaLayout(){
+      this.isKibanaLayout = this.dynamicLoader === this.KIBANA_DASHBOARD
     }
     public subscribeFilterValues():void{
       this.ligFormFilterControlService.filters$.subscribe((filters)=>{
@@ -138,7 +149,7 @@ export class FELigDashboardFilterModel {
       //
       this.mapFilterControlsToFilter();
       //
-      this.initateGetLigDataApiCall(this.filtersApplied);
+      this.initateGetLigDataApiCall(this.filtersApplied,false);
       //
       if(this.filtersApplied){
         this.ligFormFilterControlService.emitSelectedFilters(this.filtersApplied)
@@ -160,7 +171,7 @@ export class FELigDashboardFilterModel {
       }
       
       this.mapFilterControlsToFilter();
-      this.initateGetLigDataApiCall(this.filtersApplied);
+      this.initateGetLigDataApiCall(this.filtersApplied,false);
     }
     public mapFilterControlsToFilter(){
       this.filterFormControls.forEach((value,key) => {
@@ -174,7 +185,7 @@ export class FELigDashboardFilterModel {
     public destroy():void{
       this.subsList.forEach((sub)=>sub.unsubscribe())
     }
-    public initateGetLigDataApiCall(filterObj: LigDataFilterIModel ){
-      this.ligDashBoardModel2.initateGetLigDataCall(filterObj)
+    public initateGetLigDataApiCall(filterObj: LigDataFilterIModel,provideData:boolean ){
+      this.ligDashBoardModel2.initateGetLigDataCall(filterObj,provideData)
     }
 }
