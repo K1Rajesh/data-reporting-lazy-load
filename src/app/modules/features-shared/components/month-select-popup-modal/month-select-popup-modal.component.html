@@ -4,51 +4,55 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close" (click)="popupCloseHandler()">&times;</span>
-    <div class="duration-select-container">
+    <div class="select-download-filter-container">
 
-        <div class="duration-fiscaly-year-container">
-            <label>Fiscal Year:</label>
-            <label class="select" for="slct">
-                <select id="slct"  class="select-fiscaly-year"
-                [(ngModel)]="selectedFinancialYear"
-                (change)="onFinacialYearSelcetChangeHandler()">
-                    <option value=null>Select</option>
-                    <option *ngFor="let year of dataAvailableForFinancialYears"
-                    [value]="year" > {{year}} - {{year+1}} </option>
-                </select>
-                <svg>
-                    <use xlink:href="#select-arrow-down"></use>
-                </svg>
-            </label>
-            <!-- SVG Sprites-->
-            <svg class="sprites">
-                <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                    <polyline points="1 1 5 5 9 1"></polyline>
-                </symbol>
-            </svg>
+        <div class="dynamic-filter-container select-download-filter-container-item">
+            <ng-container #feDashboardFilterContainer></ng-container>
         </div>
-        <div class="duration-month-container">
-            <label>Month:</label> 
-            <label class="select" for="slct">
-                <select id="slct" 
-                [(ngModel)]="selectedMonth">
-                    <option value=null>Select</option>
-                    <option *ngFor = "let month of dataAvailableForMonths"
-                    [value]="month" class="select-month"> {{month | monthName}}</option>
-                </select>
-                <svg>
-                    <use xlink:href="#select-arrow-down"></use>
-                </svg>
-            </label>
-            <!-- SVG Sprites-->
-            <svg class="sprites">
-                <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                    <polyline points="1 1 5 5 9 1"></polyline>
-                </symbol>
-            </svg>
-        </div>
-        <button class="Kibana-btn" (click)="downloadClickHander()">Download</button>
+
+        <button class="Kibana-btn select-download-filter-container-item download-btn" (click)="downloadClickHander()">Download</button>
 
     </div>
   </div>
 </div>
+
+<!-- 
+<div class="duration-fiscaly-year-container">
+    <label>Fiscal Year:</label>
+    <label class="select" for="slct">
+        <select id="slct"  class="select-fiscaly-year"
+        [(ngModel)]="selectedFinancialYear"
+        (change)="onFinacialYearSelcetChangeHandler()">
+            <option value=null>Select</option>
+            <option *ngFor="let year of dataAvailableForFinancialYears"
+            [value]="year" > {{year}} - {{year+1}} </option>
+        </select>
+        <svg>
+            <use xlink:href="#select-arrow-down"></use>
+        </svg>
+    </label>
+    <svg class="sprites">
+        <symbol id="select-arrow-down" viewbox="0 0 10 6">
+            <polyline points="1 1 5 5 9 1"></polyline>
+        </symbol>
+    </svg>
+</div>
+<div class="duration-month-container">
+    <label>Month:</label> 
+    <label class="select" for="slct">
+        <select id="slct" 
+        [(ngModel)]="selectedMonth">
+            <option value=null>Select</option>
+            <option *ngFor = "let month of dataAvailableForMonths"
+            [value]="month" class="select-month"> {{month | monthName}}</option>
+        </select>
+        <svg>
+            <use xlink:href="#select-arrow-down"></use>
+        </svg>
+    </label>
+    <svg class="sprites">
+        <symbol id="select-arrow-down" viewbox="0 0 10 6">
+            <polyline points="1 1 5 5 9 1"></polyline>
+        </symbol>
+    </svg>
+</div> -->

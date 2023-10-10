@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { EventEmitter } from  '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Injectable, ViewChild, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
+
 
 import { MonthSelectPopupModalModel } from '../../domain/models/month-select-popup-modal.model'
 
@@ -25,27 +26,13 @@ export class MonthSelectPopupModalComponent {
   get close():EventEmitter<boolean> {
     return this.model.close;
   }
-  get selectedFinancialYear(): number | null{
-    return this.model.selectedFinancialYear
+  @ViewChild('feDashboardFilterContainer', { read: ViewContainerRef, static: true }) 
+  get feDashboardFilterContainer(): ViewContainerRef{
+    return this.model.feDashboardFilterContainer;
   }
-  set selectedFinancialYear(val : number | null ){
-    this.model.selectedFinancialYear = val;
+  set feDashboardFilterContainer(val: ViewContainerRef){
+    this.model.feDashboardFilterContainer = val;
   }
-  get selectedMonth(): number | null{
-    return this.model.selectedMonth
-  }
-  set selectedMonth(val : number | null ){
-    this.model.selectedMonth = val;
-  }
-  
-  get dataAvailableForFinancialYears():Array<number>{
-    return this.model.dataAvailableForFinancialYears
-  }
-  get dataAvailableForMonths():Array<number>{
-    return this.model.dataAvailableForMonths
-  }
-  
-
 
   constructor(private model : MonthSelectPopupModalModel) { 
 
@@ -61,10 +48,6 @@ export class MonthSelectPopupModalComponent {
   }
   public downloadClickHander():void{
     this.model.downloadClickHander();
-  }
-  public onFinacialYearSelcetChangeHandler():void{
-    this.model.onFinacialYearSelcetChangeHandler()
-    
   }
 
 }
