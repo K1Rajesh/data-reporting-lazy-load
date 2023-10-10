@@ -19,5 +19,8 @@ export const CONST_VALUES = {
         INDEXING:"Indexing",
         FE_DASHBOARDS:"FE-Dashboards",
         LOGOUT: "Logout"
+    },
+    DYNAMIC_LOADER_ID:{
+        KIBANA_DASHBOARD : "kibanaDashboard"
     }
 };
