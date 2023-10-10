@@ -9,6 +9,7 @@ export type LigDataRequestIModel = {
 
 export interface LigDataFilterIModel {
   "month": string,
+  "FinancialYear":string,
   "user_persona"? : Array<string>,
   "taluka"? : Array<string>,
   "sap_cc_number"? : Array<string>,
@@ -30,6 +31,7 @@ export const SAMPLE_LIG_DATA_REQUEST: LigDataRequestIModel = {
   "provideData":true,
   "filters": {
     "month": "2023-08",
+    'FinancialYear':'2023-2024',
     "user_persona": ["lubes_personalvehicleowner"],
     "taluka": ["Kesinga"],
     "sap_cc_number": ["117606.0"],

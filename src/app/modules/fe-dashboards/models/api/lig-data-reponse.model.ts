@@ -5,6 +5,7 @@ export type LigDataResponseIModel = {
     "recordCount"?:number,
     "success"?: boolean,
     "errorMessage"?:string,
+    "provideData": boolean
 }
 
 export type  AggregateDataIModel =  {
@@ -23,6 +24,8 @@ export type  FilterIModel =  {
     "state": Array<string>,
     "taluka": Array<string>,
     "user_persona": Array<string>,
+    "month":Array<string>,
+    "FinancialYear":Array<string>
 }
 
 export interface DataIModel    {

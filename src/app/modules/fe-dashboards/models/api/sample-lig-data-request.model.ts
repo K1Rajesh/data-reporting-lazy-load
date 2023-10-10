@@ -7,6 +7,7 @@ export const MOCK_LIG_DATA_REQUEST: LigDataRequestIModel = {
   "provideData":true,
   "filters": {
     "month": "2023-08",
+    'FinancialYear':'2023-2024',
     "user_persona": ["lubes_personalvehicleowner"],
     "taluka": ["Kesinga"],
     "sap_cc_number": ["117606.0"],
