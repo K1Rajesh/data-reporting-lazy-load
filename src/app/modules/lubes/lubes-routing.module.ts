@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LubesComponent } from './components/lubes/lubes.component'
 import { LigComponent } from './components/lig/lig.component'
+import { LigContainerComponent} from './components/lig-container/lig-container.component'
 
 
 
@@ -11,7 +12,7 @@ const routes: Routes = [
     path:'', component: LubesComponent,
     children:[
       {
-        path: 'lig', component: LigComponent,
+        path: 'lig', component: LigContainerComponent,
       },
       {
         path:'logs',

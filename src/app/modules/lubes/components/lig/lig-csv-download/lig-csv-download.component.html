@@ -13,10 +13,13 @@
             <app-loader ></app-loader>
            </ng-template>
         </div>
- 
+
     </div>
-    <app-month-select-popup-modal [showPopup]="showPopup" 
-    (submit)="monthSelectModalSubmitHandler($event)" (close)="monthSelectModalCloseHandler()"></app-month-select-popup-modal>
+    <div>
+        <app-month-select-popup-modal [showPopup]="showPopup" 
+        (submit)="monthSelectModalSubmitHandler($event)" (close)="monthSelectModalCloseHandler()"></app-month-select-popup-modal>
+    
+    </div>
 
 </div>
 

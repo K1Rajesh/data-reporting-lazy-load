@@ -9,13 +9,15 @@ import { LubesRoutingModule } from './lubes-routing.module'
 
 import { FeaturesSharedModule } from './../features-shared/features-shared.module';
 import { FEDashboardsModule } from '../fe-dashboards/fe-dashboards.module';
+import { LigContainerComponent } from './components/lig-container/lig-container.component';
 
 
 @NgModule({
   declarations: [
     LubesComponent,
     LigComponent,
-    LigCsvDownloadComponent
+    LigCsvDownloadComponent,
+    LigContainerComponent
   ],
   imports: [
     CommonModule,
