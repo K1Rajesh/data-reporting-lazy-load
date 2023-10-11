@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit  } from '@angular/core';
 
 import  { LigDashboardDataModel } from '../../models/lig-dashboard-data.model'
 
-import { LigDashboardModel2 } from '../../domain/models/lig-dashboard2.model'
+import { FELigDashboardModel } from '../../domain/models/fe-lig-dashboard.model'
 
 
 @Component({
@@ -13,7 +13,7 @@ import { LigDashboardModel2 } from '../../domain/models/lig-dashboard2.model'
 })
 export class LigDashboardComponent implements OnInit , OnDestroy {
 
-  constructor(private ligDashboardModel : LigDashboardModel2) {
+  constructor(private ligDashboardModel : FELigDashboardModel) {
   }
   get headerColumns(): Array<string> {
     return  this.ligDashboardModel.headerColumns;

@@ -6,7 +6,7 @@ import {map, startWith} from 'rxjs/operators';
 
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
-//import { LigDashboardModel2} from './lig-dashboard2.model'
+//import { FELigDashboardModel} from './fe-lig-dashboard.model'
 import { LigDashboardModel3} from './lig-dashboard3.model'
 
 import { LigDataFilterIModel } from "../../models/api/lig-data-request.model";
@@ -45,7 +45,7 @@ export class FELigDashboardFilterModel {
     public isKibanaLayout:boolean = false;
   
     constructor(
-      //private ligDashBoardModel2 : LigDashboardModel2,
+      //private FELigDashboardModel : FELigDashboardModel,
       private ligDashBoardModel3 : LigDashboardModel3,
        private ligFormFilterControlService:LigFormFilterControlService) {
     }

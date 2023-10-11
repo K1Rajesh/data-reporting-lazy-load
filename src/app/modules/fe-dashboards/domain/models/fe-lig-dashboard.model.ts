@@ -3,15 +3,15 @@ import { Injectable } from "@angular/core";
 import { Observable , Subscription} from 'rxjs';
 
 import { FELigDataService } from '../../services/fe-lig-data.service';
-import { LigFormFilterControlService} from './../../services/lig-form-filter-controls.service'
+import { LigFormFilterControlService} from '../../services/lig-form-filter-controls.service'
 
 
-import { LigDataRequestIModel,LigDataFilterIModel,UserIModel } from './../../models/api/lig-data-request.model';
-import { LigDataResponseIModel } from './../../models/api/lig-data-reponse.model';
+import { LigDataRequestIModel,LigDataFilterIModel,UserIModel } from '../../models/api/lig-data-request.model';
+import { LigDataResponseIModel } from '../../models/api/lig-data-reponse.model';
 import  { LigDashboardDataModel, LigDashboardTableViewHeaders } from '../../models/lig-dashboard-data.model'
 
 @Injectable()
-export class LigDashboardModel2 {
+export class FELigDashboardModel {
     public ligDataSource : Array<LigDashboardDataModel> | undefined = undefined;
     public currentPageDataSource : Array<LigDashboardDataModel> | undefined = undefined;
     
