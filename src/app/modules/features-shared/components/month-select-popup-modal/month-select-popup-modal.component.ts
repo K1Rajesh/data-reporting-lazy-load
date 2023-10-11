@@ -1,8 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Injectable, ViewChild, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy,
+OnChanges, SimpleChanges } from '@angular/core';
+import { ViewChild, ViewContainerRef } from "@angular/core";
 
 
-import { MonthSelectPopupModalModel } from '../../domain/models/month-select-popup-modal.model'
+import { MonthSelectPopupModalModel } from '../../domain/models/month-select-popup-modal.model';
+import { LigDataFilterIModel } from "../../../fe-dashboards/models/api/lig-data-request.model";
+
 
 @Component({
   selector: 'app-month-select-popup-modal',
@@ -10,7 +13,7 @@ import { MonthSelectPopupModalModel } from '../../domain/models/month-select-pop
   styleUrls: ['./month-select-popup-modal.component.css'],
   providers: [MonthSelectPopupModalModel]
 })
-export class MonthSelectPopupModalComponent {
+export class MonthSelectPopupModalComponent implements OnInit, OnChanges , OnDestroy {
   @Input() 
   get showPopup(): boolean{
     return this.model.showPopup
@@ -19,7 +22,7 @@ export class MonthSelectPopupModalComponent {
     this.model.showPopup = val
   }
   @Output() 
-  get submit():EventEmitter<{fiscalYear : string | undefined ,month :string | undefined}> {
+  get submit():EventEmitter<LigDataFilterIModel> {
     return this.model.submit;
   }
   @Output() 
@@ -40,6 +43,15 @@ export class MonthSelectPopupModalComponent {
   ngOnInit():void{
     this.model.init();
   }
+  ngOnChanges(changes: SimpleChanges):void {
+    if(changes.showPopup){
+      this.model.unLoadFELigDashboardFilterComponent();
+      this.model.loadFELigDashboardFilterComponent()
+    }
+    else{
+      this.model.unLoadFELigDashboardFilterComponent();
+    } 
+  }
   public popupOpenHandler():void{
     this.model.popupOpenHandler();
   }
@@ -48,6 +60,9 @@ export class MonthSelectPopupModalComponent {
   }
   public downloadClickHander():void{
     this.model.downloadClickHander();
+  }
+  ngOnDestroy():void{
+    this.model.destroy();
   }
 
 }
