@@ -6,7 +6,7 @@ import { FELigDataService } from '../../services/fe-lig-data.service';
 import { LigFormFilterControlService} from './../../services/lig-form-filter-controls.service'
 
 
-import { LigDataRequestIModel,LigDataFilterIModel } from './../../models/api/lig-data-request.model';
+import { LigDataRequestIModel,LigDataFilterIModel,UserIModel } from './../../models/api/lig-data-request.model';
 import { LigDataResponseIModel } from './../../models/api/lig-data-reponse.model';
 import  { LigDashboardDataModel, LigDashboardTableViewHeaders } from '../../models/lig-dashboard-data.model'
 
@@ -38,17 +38,17 @@ export class LigDashboardModel2 {
 
     }
     public getSourceDataclickHandler(): void {
-        this.initateGetLigDataCall({"month": "2023-08"});
+        this.initateGetLigDataCall({"month": ["2023-08"],'FinancialYear':['2023-2024']},true);
     }
 
-    public initateGetLigDataCall(filters:LigDataFilterIModel){
+    public initateGetLigDataCall(filters:LigDataFilterIModel, provideData : boolean, user?: UserIModel ){
+      const dummyUser = {
+        "email": "abhisekdatta@corp.bharatpetroleum.com" , // "sonawaneug@corp.bharatpetroleum.com",
+      };
       const payLoad:LigDataRequestIModel = {
-        "user": {
-          "email": "abhisekdatta@corp.bharatpetroleum.com"
-          //"email": "sonawaneug@corp.bharatpetroleum.com",
-        },
+        "user": user ? user : dummyUser,
         filters: filters,
-        "provideData":true
+        "provideData":provideData
       }
       this.ligDataServiceLigData$ = this.ligDataService.getLigData(payLoad);
       this.subscribeGetLigDataCall();
@@ -58,8 +58,8 @@ export class LigDashboardModel2 {
             this.ligDataServiceLigData$!
             .subscribe(
               (ligData : LigDataResponseIModel ) =>{
-                if(ligData){
-                  if( ligData.data){
+                if(ligData && ligData.success ){
+                  if( ligData.provideData && ligData.data){
                     //console.log(ligData);
                     this.initDataSource(ligData.data)
                   }       
