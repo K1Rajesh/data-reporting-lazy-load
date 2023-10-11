@@ -6,7 +6,8 @@ import {map, startWith} from 'rxjs/operators';
 
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
-import { LigDashboardModel2} from './lig-dashboard2.model'
+//import { LigDashboardModel2} from './lig-dashboard2.model'
+import { LigDashboardModel3} from './lig-dashboard3.model'
 
 import { LigDataFilterIModel } from "../../models/api/lig-data-request.model";
 import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
@@ -21,7 +22,6 @@ export class FELigDashboardFilterModel {
     private subsList : Array<Subscription> = new Array<Subscription>();
 
     public filtersUniqueValues : any;
-
     public filtersAvailable : Array<string> = [
       'FinancialYear',
       'month',
@@ -36,41 +36,38 @@ export class FELigDashboardFilterModel {
       'PRODUCT_NAME',
       'PRODUCT_BRAND',
     ]
-
-    /* ------------------------ filter related propertires start --------------------- */
-
     public filterFormControls : Map<string , FiterControlIModel> = new Map<string , FiterControlIModel>();
-
-    /* ------------------------ filter related propertires start --------------------- */
-
     private filtersApplied : LigDataFilterIModel;
+
     public isShowFilter: boolean = false;
     public dynamicLoader:string | undefined = undefined;
     public KIBANA_DASHBOARD = CONST_VALUES.DYNAMIC_LOADER_ID.KIBANA_DASHBOARD
     public isKibanaLayout:boolean = false;
   
-    constructor(private ligDashBoardModel2 : LigDashboardModel2,
+    constructor(
+      //private ligDashBoardModel2 : LigDashboardModel2,
+      private ligDashBoardModel3 : LigDashboardModel3,
        private ligFormFilterControlService:LigFormFilterControlService) {
-      this.filtersApplied = { "month": "2023-08",'FinancialYear':'2023-2024'}
     }
     init(){
-      //this.subscribeLigData();
-      //this.subscribeFilterControlValueChanges();
+      this.setInitialAppliedFilterValues();
       this.subscribeFilterValues()
       this.initFilterFormControls();
       this.setIsKibanaLayout();
       if(this.isKibanaLayout){
-        this.initateGetLigDataApiCall(this.filtersApplied,false);
+        this.initateGetLigDataApiCall(this.filtersApplied!,false);
       }
     }
     public setIsKibanaLayout(){
       this.isKibanaLayout = this.dynamicLoader === this.KIBANA_DASHBOARD
     }
     public subscribeFilterValues():void{
-      this.ligFormFilterControlService.filters$.subscribe((filters)=>{
-        this.filtersUniqueValues = filters;
-        this.setFilterValues();
-      });
+      this.subsList.push(
+        this.ligFormFilterControlService.filters$.subscribe((filters)=>{
+          this.filtersUniqueValues = filters;
+          this.setFilterValues();
+        })
+      );
     }
     public initFilterFormControls(): void {
       this.filtersAvailable.forEach(filter=>{
@@ -93,10 +90,28 @@ export class FELigDashboardFilterModel {
           this.filterFormControls.set(filter , tempfilterFormControl);
         }
       })
+      //overrideDefaultFilterValues
+      this.setFixedFilterControlValues();
 
       this.subscribeFilterControlValueChanges();
     }
-
+    public setInitialAppliedFilterValues(){
+      this.filtersApplied = {month:["2023-08"],FinancialYear:["2023-2024"]}
+    }
+    public setFixedFilterControlValues():void{
+      const tempfilterFormControlYear = this.filterFormControls.get('FinancialYear');
+      if(tempfilterFormControlYear){
+        tempfilterFormControlYear.filtersSelected = ["2023-2024"]
+        tempfilterFormControlYear.filterControl.disable({ onlySelf: true, emitEvent: false})
+        this.filterFormControls.set('FinancialYear' , tempfilterFormControlYear);
+      }
+      const tempfilterFormControlMonth = this.filterFormControls.get('month');
+      if(tempfilterFormControlMonth){
+        tempfilterFormControlMonth.filtersSelected = ["2023-08"]
+        tempfilterFormControlMonth.filterControl.disable({ onlySelf: true, emitEvent: false})
+        this.filterFormControls.set('month' , tempfilterFormControlMonth);
+      }
+    }
     public subscribeFilterControlValueChanges():void{
 
       this.filtersAvailable.forEach((filter)=>{
@@ -149,7 +164,7 @@ export class FELigDashboardFilterModel {
       //
       this.mapFilterControlsToFilter();
       //
-      this.initateGetLigDataApiCall(this.filtersApplied,false);
+      this.initateGetLigDataApiCall(this.filtersApplied!,false);
       //
       if(this.filtersApplied){
         this.ligFormFilterControlService.emitSelectedFilters(this.filtersApplied)
@@ -171,11 +186,11 @@ export class FELigDashboardFilterModel {
       }
       
       this.mapFilterControlsToFilter();
-      this.initateGetLigDataApiCall(this.filtersApplied,false);
+      this.initateGetLigDataApiCall(this.filtersApplied!,false);
     }
     public mapFilterControlsToFilter(){
       this.filterFormControls.forEach((value,key) => {
-        this.filtersApplied[key]=value.filtersSelected;
+        this.filtersApplied![key]=value.filtersSelected;
       });
     }
     public formSubmitHandler():void{
@@ -186,6 +201,6 @@ export class FELigDashboardFilterModel {
       this.subsList.forEach((sub)=>sub.unsubscribe())
     }
     public initateGetLigDataApiCall(filterObj: LigDataFilterIModel,provideData:boolean ){
-      this.ligDashBoardModel2.initateGetLigDataCall(filterObj,provideData)
+      this.ligDashBoardModel3.initateGetLigDataCall(filterObj,provideData)
     }
 }
