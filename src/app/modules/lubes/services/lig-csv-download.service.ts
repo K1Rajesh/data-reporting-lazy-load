@@ -11,9 +11,8 @@ export class LigCsvDownloadService{
           
         }
             
-        downloadFile(data:any, csvHeaders:Array<string>) {
-          let arrHeader = csvHeaders;
-          let csvData = this.ConvertToCSV(data, arrHeader);
+        downloadFile(data:any, csvHeaders:Array<string>,newHeaderMapping:Map<string,string>) {
+          let csvData = this.ConvertToCSV(data, csvHeaders,newHeaderMapping);
           console.log(csvData)
           let blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' });
           let dwldLink = document.createElement("a");
@@ -30,17 +29,15 @@ export class LigCsvDownloadService{
           document.body.removeChild(dwldLink);
         }
       
-        ConvertToCSV(objArray:any, headerList:Array<string>) {
+        ConvertToCSV(objArray:any, headerList:Array<string>,newHeaderMapping:Map<string,string>) {
           //console.log(objArray);
           //console.log(headerList);
           let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
           let str = '';
           let row = 'S.No,';
-      
-          let newHeaders = headerList;
-      
-          for (let index in newHeaders) {
-            row += newHeaders[index] + ',';
+            
+          for (let index in headerList) {
+            row += newHeaderMapping.get(headerList[index]) + ',';
           }
           row = row.slice(0, -1);
           str += row + '\r\n';
