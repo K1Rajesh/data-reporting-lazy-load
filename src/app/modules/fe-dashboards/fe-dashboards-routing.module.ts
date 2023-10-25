@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LigDashboardComponent } from './components/lig-dashboard/lig-dashboard.component';
-import { DashboardContainerComponent } from './components/dashboard-container/dashboard-container.component'
+import { FELigDashboardComponent } from './components/fe-lig-dashboard/fe-lig-dashboard.component';
+import { FEDashboardContainerComponent } from './components/fe-dashboard-container/fe-dashboard-container.component'
 
 const dashboardRoutes: Routes = [
   {
     path:'',
-    component: DashboardContainerComponent
+    component: FEDashboardContainerComponent
   },
   {
     path:'lig-dashboard',
-    component: LigDashboardComponent
+    component: FELigDashboardComponent
   },
   {
     path:'lig-dashboard-container',
-    component: DashboardContainerComponent
+    component: FEDashboardContainerComponent
   }
 ];
 

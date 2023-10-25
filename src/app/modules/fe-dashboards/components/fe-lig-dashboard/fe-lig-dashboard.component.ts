@@ -7,11 +7,11 @@ import { FELigDashboardModel } from '../../domain/models/fe-lig-dashboard.model'
 
 @Component({
   selector: 'app-lig-dashboard',
-  templateUrl: './lig-dashboard.component.html',
-  styleUrls: ['./lig-dashboard.component.css'],
+  templateUrl: './fe-lig-dashboard.component.html',
+  styleUrls: ['./fe-lig-dashboard.component.css'],
   providers: []
 })
-export class LigDashboardComponent implements OnInit , OnDestroy {
+export class FELigDashboardComponent implements OnInit , OnDestroy {
 
   constructor(private ligDashboardModel : FELigDashboardModel) {
   }
@@ -40,9 +40,9 @@ export class LigDashboardComponent implements OnInit , OnDestroy {
   ngOnInit(): void {
     this.ligDashboardModel.init();
   }
-  public getSourceDataclickHandler(): void {
-    this.ligDashboardModel.getSourceDataclickHandler();
-  }
+  // public getSourceDataclickHandler(): void {
+  //   this.ligDashboardModel.getSourceDataclickHandler();
+  // }
 
   public pageSelectHandler(pageSelectedNumberVal:string | number):void{
     this.ligDashboardModel.pageSelectHandler(pageSelectedNumberVal)
