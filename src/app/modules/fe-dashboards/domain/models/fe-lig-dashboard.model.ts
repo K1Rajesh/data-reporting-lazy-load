@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable , Subscription} from 'rxjs';
 
 import { FELigDataService } from '../../services/fe-lig-data.service';
-import { LigFormFilterControlService} from '../../services/lig-form-filter-controls.service'
+import { LigDataModel} from "../../domain/models/lig-data.model";
 
 
 import { LigDataRequestIModel,LigDataFilterIModel,UserIModel } from '../../models/api/lig-data-request.model';
@@ -27,50 +27,66 @@ export class FELigDashboardModel {
     public isShowTableLoader: boolean = false;
     public filters: any;
 
-    public ligDataServiceLigData$ : Observable<LigDataResponseIModel> | undefined = undefined;
+    //public ligDataServiceLigData$ : Observable<LigDataResponseIModel | undefined>;
+    // get ligDataServiceLigData$() {
+    //   return this.ligDataModel.ligDataResponse$;
+    // } 
     
 
-    constructor(private ligDataService:FELigDataService, 
-      private ligFormFilterControlService:LigFormFilterControlService) {
+    constructor(private ligDataModel : LigDataModel ) {
         this.headerColumns  = LigDashboardTableViewHeaders
     }
     init(){
-
-    }
-    public getSourceDataclickHandler(): void {
-        this.initateGetLigDataCall({"month": ["2023-08"],'FinancialYear':['2023-2024']},true);
-    }
-
-    public initateGetLigDataCall(filters:LigDataFilterIModel, provideData : boolean, user?: UserIModel ){
-      const dummyUser = {
-        "email": "abhisekdatta@corp.bharatpetroleum.com" , // "sonawaneug@corp.bharatpetroleum.com",
-      };
-      const payLoad:LigDataRequestIModel = {
-        "user": user ? user : dummyUser,
-        filters: filters,
-        "provideData":provideData
-      }
-      this.ligDataServiceLigData$ = this.ligDataService.getLigData(payLoad);
+      //this.ligDataServiceLigData$ = this.ligDataModel.ligDataResponse$;
       this.subscribeGetLigDataCall();
     }
+    // public getSourceDataclickHandler(): void {
+    //     this.initateGetLigDataCall({"month": ["2023-08"],'FinancialYear':['2023-2024']},true);
+    // }
+
+    // public initateGetLigDataCall(filters:LigDataFilterIModel, provideData : boolean, user?: UserIModel ){
+    //   const dummyUser = {
+    //     "email": "abhisekdatta@corp.bharatpetroleum.com" , // "sonawaneug@corp.bharatpetroleum.com",
+    //   };
+    //   const payLoad:LigDataRequestIModel = {
+    //     "user": user ? user : dummyUser,
+    //     filters: filters,
+    //     "provideData":provideData
+    //   }
+    //   this.ligDataServiceLigData$ = this.ligDataService.getLigData(payLoad);
+    //   this.subscribeGetLigDataCall();
+    // }
+
     private subscribeGetLigDataCall(){
-        this.subsList.push(
-            this.ligDataServiceLigData$!
-            .subscribe(
-              (ligData : LigDataResponseIModel ) =>{
-                if(ligData && ligData.success ){
-                  if( ligData.provideData && ligData.data){
-                    //console.log(ligData);
-                    this.initDataSource(ligData.data)
-                  }       
-                  if(ligData.filters){
-                    this.ligFormFilterControlService.updateFilters(ligData.filters);
-                  }
-                }
-              }, 
-              (err:any) =>{console.log("getLigData API Error: ",err)} 
-            )
-          )    
+
+      this.subsList.push(
+        this.ligDataModel.getLigDataResponse()
+        .subscribe((ligDataResponse:LigDataResponseIModel | undefined)=>{
+            if(ligDataResponse?.success && ligDataResponse?.provideData && ligDataResponse?.data){
+              //this.isDataLoading = false;
+              this.initDataSource(ligDataResponse.data)
+            }
+          },
+          (error)=>{
+            //this.isDataLoading = false;
+          }
+        )
+      )
+        // this.subsList.push(
+        //     this.ligDataServiceLigData$!
+        //     .subscribe(
+        //       (ligData : LigDataResponseIModel ) =>{
+        //         if(ligData && ligData.success ){
+        //           if( ligData.provideData && ligData.data){
+        //             //console.log(ligData);
+        //             this.initDataSource(ligData.data)
+        //           }       
+
+        //         }
+        //       }, 
+        //       (err:any) =>{console.log("getLigData API Error: ",err)} 
+        //     )
+        //   )    
     }
     public initDataSource(ligData : Array<LigDashboardDataModel>){
         this.ligDataSource = ligData

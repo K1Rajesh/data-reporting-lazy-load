@@ -1,11 +1,10 @@
 import { Injectable, EventEmitter, ViewContainerRef, ComponentFactoryResolver } from "@angular/core";
 import { Subscription } from "rxjs";
-import { take } from "rxjs/operators";
 
 import { CONST_VALUES } from "../../../../core/constant-reources";
 
 import { FELigDashboardFilterComponent } from '../../../fe-dashboards/components/fe-lig-dashboard-filter/fe-lig-dashboard-filter.component';
-import { LigFormFilterControlService } from '../../../fe-dashboards/services/lig-form-filter-controls.service';
+
 import { LigDataFilterIModel } from "../../../fe-dashboards/models/api/lig-data-request.model";
 
 
@@ -13,13 +12,13 @@ import { LigDataFilterIModel } from "../../../fe-dashboards/models/api/lig-data-
 export class MonthSelectPopupModalModel{
 
     public showPopup: boolean = false;
-    public submit: EventEmitter<LigDataFilterIModel> = new EventEmitter<LigDataFilterIModel>();
+    public submit: EventEmitter<void> = new EventEmitter<void>();
     public close: EventEmitter<boolean> = new EventEmitter<boolean>();
     public feDashboardFilterContainer : ViewContainerRef;
     private KIBANA_DASHBOARD = CONST_VALUES.DYNAMIC_LOADER_ID.KIBANA_DASHBOARD
     private dynamicFELigDashboardFilterComponent : FELigDashboardFilterComponent;
     private subsList:Array<Subscription> = new Array<Subscription>();
-    constructor(private componentFactoryResolver: ComponentFactoryResolver, private ligFormFilterControlService : LigFormFilterControlService ){
+    constructor(private componentFactoryResolver: ComponentFactoryResolver){
 
     }
     public init():void{
@@ -33,7 +32,7 @@ export class MonthSelectPopupModalModel{
         this.close.emit(true)
     }
     public downloadClickHander():void{
-      this.subscribeSelectedFilters();
+      this.submit.emit();
     }
     public loadFELigDashboardFilterComponent() : void {
 
@@ -50,18 +49,6 @@ export class MonthSelectPopupModalModel{
     }
     public unLoadFELigDashboardFilterComponent():void{
       this.feDashboardFilterContainer?.clear();
-    }
-    public subscribeSelectedFilters(){
-      this.subsList.push(
-        this.ligFormFilterControlService.selctedFilters$
-        .pipe(take(1))
-        .subscribe((selectedFilters: LigDataFilterIModel | undefined)=>{
-          if(selectedFilters){
-            this.submit.emit(selectedFilters!)
-              //this.close.emit(true);
-          }
-        })
-      );
     }
     public destroy():void{
       this.subsList.forEach((sub)=>{

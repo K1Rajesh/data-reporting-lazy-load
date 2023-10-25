@@ -1,6 +1,7 @@
 <div class="filter-conatiner">
   <div *ngIf=!isKibanaLayout class="show-filter-button-container">
-      <button class="Kibana-btn show-hide-filter" (click)="isShowFilter = !isShowFilter"> {{ isShowFilter ? 'Hide Filter' : 'Show Filter' }}</button>
+      <button class="Kibana-btn show-hide-filter"  *ngIf="isShowFilter" (click)="applyFilterClickHandler()"> Apply filters </button>
+      <button class="Kibana-btn show-hide-filter" (click)="isShowFilter = !isShowFilter"> {{ isShowFilter ? 'Hide Filters' : 'Additional Filters' }}</button>
   </div>
   <div class="filter-container" [ngClass]="{'show':isShowFilter || isKibanaLayout}">
     <form class="filter-form">
@@ -14,8 +15,8 @@
          </div>
           <mat-form-field class="example-full-width">
             
-            <div class="selected-filter-item-values-container" *ngIf="filter.value.filtersSelected.length > 0">
-              <div class="eui-badge-container"  *ngFor="let selctedFilterValue of filter.value.filtersSelected">
+            <div class="selected-filter-item-values-container" *ngIf="(filter?.value?.filtersOptionsSelected) && filter?.value?.filtersOptionsSelected!.length > 0">
+              <div class="eui-badge-container"  *ngFor="let selctedFilterValue of filter.value.filtersOptionsSelected">
                 <app-eui-badge  [displayName]="selctedFilterValue" 
                 (click)="optionRemoveHandler(selctedFilterValue,filter.key)"></app-eui-badge>
               </div>

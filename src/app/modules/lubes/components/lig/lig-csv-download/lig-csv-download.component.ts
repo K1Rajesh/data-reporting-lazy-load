@@ -1,20 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, pipe } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { LigCsvDownloadService } from './../../../services/lig-csv-download.service';
-//import { LigDataService } from './../../../services/lig-data.service';
 
 import { LigDataResponseModel } from '../../../models/api/lig-data-response.model';
 import { LigDashboardTableApiHeaders, LigDashboardTableHeadersApiMapping } from '../../../models/lig-dashboard-data.model';
 
-import { UserDetailsModel } from '../../../../authorized-user/domain/models/user-details.model';
-
-import { LigDataRequestIModel ,LigDataFilterIModel } from "../../../../fe-dashboards/models/api/lig-data-request.model";
 import {LigDataResponseIModel} from "../../../../fe-dashboards/models/api/lig-data-reponse.model";
 
-
-import { FELigDataService } from "../../../../fe-dashboards/services/fe-lig-data.service";
-
+import { LigDataModel} from "../../../../fe-dashboards/domain/models/lig-data.model";
 
 @Component({
   selector: 'app-lig-csv-download',
@@ -27,8 +22,14 @@ export class LigCsvDownloadComponent implements OnInit, OnDestroy {
   public isDataLoading: boolean = false;
   public csvDownloadHeaders: Array<string> = new Array<string>();
   private subsList : Array<Subscription> = new Array<Subscription>();
-  constructor(private ligCsvDownloadService : LigCsvDownloadService,private userDetailsModel: UserDetailsModel,
-    private feLigDataService : FELigDataService){
+  //public ligDataServiceLigData$ : Observable<LigDataResponseIModel | undefined>;
+
+  // get ligDataServiceLigData$() {
+  //   return this.ligDataModel.ligDataResponse$;
+  // } 
+
+  constructor(private ligCsvDownloadService : LigCsvDownloadService,
+    private ligDataModel : LigDataModel ){
     console.log("At LigCsvDownloadComponent constructor");
   }
   ngOnInit(){
@@ -36,22 +37,20 @@ export class LigCsvDownloadComponent implements OnInit, OnDestroy {
     //   const mappedHeader = LigDashboardTableHeadersApiMapping.get(header);
     //   return mappedHeader ? mappedHeader : header;
     // })
+    //this.ligDataServiceLigData$ = this.ligDataModel.ligDataResponse$;
     this.csvDownloadHeaders = LigDashboardTableApiHeaders
   }
-  public monthSelectModalSubmitHandler(appliedFilters:LigDataFilterIModel){
+  public monthSelectModalSubmitHandler(){
     this.showPopup = false;
     this.isDataLoading = true;
 
-    const userEmail = this.userDetailsModel.userDetails?.nameID! //gives email address
-    const ligDataReqPayLoad: LigDataRequestIModel ={
-      user:{email:"abhisekdatta@corp.bharatpetroleum.com"} , // "sonawaneug@corp.bharatpetroleum.com"
-      filters : appliedFilters,
-      provideData:true
-    };
+    this.ligDataModel.initLigDataCall(true);
+
+
     this.subsList.push(
-      this.feLigDataService.getLigData(ligDataReqPayLoad).subscribe(
-        (ligDataResponse:LigDataResponseIModel)=>{
-          if(ligDataResponse.success && ligDataResponse.provideData && ligDataResponse.data){
+      this.ligDataModel.getLigDataResponse()
+      .subscribe((ligDataResponse:LigDataResponseIModel | undefined)=>{
+          if(ligDataResponse?.success && ligDataResponse?.provideData && ligDataResponse?.data){
             this.isDataLoading = false;
             this.ligCsvDownloadService.downloadFile(ligDataResponse.data, this.csvDownloadHeaders, LigDashboardTableHeadersApiMapping );
           }

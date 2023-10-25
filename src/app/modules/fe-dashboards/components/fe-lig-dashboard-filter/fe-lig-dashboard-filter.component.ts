@@ -1,4 +1,4 @@
-import { Component, OnInit,OnChanges, OnDestroy, Input,SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
@@ -39,7 +39,7 @@ export class FELigDashboardFilterComponent implements OnInit, OnDestroy {
   }
 
   get isKibanaLayout(){
-    return this.ligDashboardFilterModel.KIBANA_DASHBOARD
+    return this.ligDashboardFilterModel.isKibanaLayout
   }
 
 
@@ -54,6 +54,9 @@ export class FELigDashboardFilterComponent implements OnInit, OnDestroy {
   }
   public optionRemoveHandler(selctedFilterValue:string,filterKey:string){
     this.ligDashboardFilterModel.optionRemoveHandler(selctedFilterValue,filterKey)
+  }
+  public applyFilterClickHandler(){
+    this.ligDashboardFilterModel.applyFilterClickHandler()
   }
   public asIsOrder(a:any,b:any){
     return 1;

@@ -22,7 +22,7 @@ export class MonthSelectPopupModalComponent implements OnInit, OnChanges , OnDes
     this.model.showPopup = val
   }
   @Output() 
-  get submit():EventEmitter<LigDataFilterIModel> {
+  get submit():EventEmitter<void> {
     return this.model.submit;
   }
   @Output() 
@@ -44,7 +44,7 @@ export class MonthSelectPopupModalComponent implements OnInit, OnChanges , OnDes
     this.model.init();
   }
   ngOnChanges(changes: SimpleChanges):void {
-    if(changes.showPopup){
+    if(changes.showPopup && changes.showPopup.currentValue){
       this.model.unLoadFELigDashboardFilterComponent();
       this.model.loadFELigDashboardFilterComponent()
     }
