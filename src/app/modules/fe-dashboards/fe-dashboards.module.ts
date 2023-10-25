@@ -6,8 +6,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-import { LigDashboardComponent } from './components/lig-dashboard/lig-dashboard.component';
-import { LigHeaderPipe } from './components/lig-dashboard/lig-header.pipe';
+import { FELigDashboardComponent } from './components/fe-lig-dashboard/fe-lig-dashboard.component';
+import { LigHeaderPipe } from './components/fe-lig-dashboard/lig-header.pipe';
 import { FELigDashboardFilterComponent } from './components/fe-lig-dashboard-filter/fe-lig-dashboard-filter.component';
 
 import { FEDashBoardsRoutingModule} from './fe-dashboards-routing.module';
@@ -16,17 +16,17 @@ import { FEDashBoardsRoutingModule} from './fe-dashboards-routing.module';
 import { FeaturesSharedModule } from './../features-shared/features-shared.module'
 import { FeDashboardsFeaturesSharedModule } from './../fe-dashboards-features-shared/fe-dashboards-features-shared.module'
 
-import { DashboardContainerComponent } from './components/dashboard-container/dashboard-container.component'
+import { FEDashboardContainerComponent } from './components/fe-dashboard-container/fe-dashboard-container.component'
 
 
 
 
 @NgModule({
   declarations: [
-    LigDashboardComponent,
+    FELigDashboardComponent,
     LigHeaderPipe,
     FELigDashboardFilterComponent,
-    DashboardContainerComponent
+    FEDashboardContainerComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +40,7 @@ import { DashboardContainerComponent } from './components/dashboard-container/da
     //SharedFeaturesModule
   ],
   exports:[
-    LigDashboardComponent
+    FELigDashboardComponent
   ]
 })
 export class FEDashboardsModule { }
