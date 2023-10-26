@@ -3,3 +3,9 @@
     padding: 20px;
     overflow: auto;
 }
+.header-container{
+    display: flex;
+}
+.csv-donmolad-component-container{
+    margin-left: auto;
+}

@@ -1,8 +1,10 @@
 <div class="container">
-    <div>
+    <div class="header-container">
         <h2> LIG Dashboard </h2>
-        <!-- <button (click)="getSourceDataclickHandler()">Get Data</button> -->
-        <ng-container *ngIf="isShowTableLoader">Loading...</ng-container>
+        <div class="csv-donmolad-component-container">
+            <app-lig-csv-download-2></app-lig-csv-download-2>
+        </div>
+        
     </div>
 
     <div>
