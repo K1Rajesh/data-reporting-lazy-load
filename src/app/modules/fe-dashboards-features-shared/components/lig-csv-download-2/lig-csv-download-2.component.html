@@ -1,0 +1,20 @@
+<div>
+    <div class="download-button-container">
+
+        <div class="button-and-loader-container">
+            <ng-container *ngIf="!isDataLoading;else appLoader">
+                <button class="Kibana-btn btn-2" 
+                (click)="downloadClickHandler()">Download
+            </button>
+                
+            </ng-container>
+
+           <ng-template #appLoader>
+            <app-loader ></app-loader>
+           </ng-template>
+        </div>
+    </div>
+</div>
+
+
+
