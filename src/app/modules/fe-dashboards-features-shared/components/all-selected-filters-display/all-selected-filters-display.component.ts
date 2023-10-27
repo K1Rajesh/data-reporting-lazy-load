@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 
 import { SelectedFiltersDisplayModel } from './../../domain/models/selected-filters-display.model';
 
@@ -12,10 +12,14 @@ import { FilterIModel5 } from '../../../fe-dashboards/models/lig-dashboard-filte
   providers:[SelectedFiltersDisplayModel]
 })
 export class AllSelectedFiltersDisplayComponent implements OnInit {
+ 
   get selectedFilters():FilterIModel5 {
     return this.model.selectedFilters
   }
   constructor(private model : SelectedFiltersDisplayModel) { }
+  public euiBadgeClickHandler(filterKey:string):void{
+    this.model.euiBadgeClickHandler(filterKey)
+  }
 
   ngOnInit() {
     this.model.init();
