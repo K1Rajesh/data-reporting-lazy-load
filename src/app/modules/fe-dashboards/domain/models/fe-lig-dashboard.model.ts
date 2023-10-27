@@ -118,11 +118,11 @@ export class FELigDashboardModel {
         }
         
     }
-    public pageSelectHandler(pageSelectedNumberVal:string | number):void{
+    public pageSelectHandler(pageSelectedNumberVal:string | number, options?:{forceRefresh?:boolean}):void{
         //const pageSelectedValue = (event.target as HTMLInputElement).value
         
         const pageSelectedNumber = parseInt(''+pageSelectedNumberVal);
-        if(pageSelectedNumber && pageSelectedNumber!== this.currentPageNumber){ // When ever we select a  valid page number
+        if( options?.forceRefresh  || (pageSelectedNumber && pageSelectedNumber!== this.currentPageNumber)){ // When ever we select a  valid page number
           this.currentPageNumber = pageSelectedNumber; //  set the currentPageNumber to the new value
           this.setSnippetPageNumberList();    //the snippet of pagination numbers shown will be updated
           this.setCurrentPageDataSource();   // curret page data also 
@@ -165,7 +165,7 @@ export class FELigDashboardModel {
     }
     public dataManipulationCompleted():void{
         //After the data manipulation is completed
-        this.pageSelectHandler(this.currentPageNumber); // re-select the current page number
+        this.pageSelectHandler(this.currentPageNumber,{forceRefresh:true}); // re-select the current page number
         this.isShowTableLoader = false;  // set the data manipulation loader to false
     }         
     public destroy():void{
