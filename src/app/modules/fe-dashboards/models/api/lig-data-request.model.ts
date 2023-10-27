@@ -23,7 +23,7 @@ export interface LigDataFilterIModel {
   "PRODUCT_NAME"?: Array<string>,
   "PRODUCT_CODE"?: Array<string>,
   "PRODUCT_BRAND"?: Array<string>,
-  [key: string]: string | Array<string> | undefined;
+  [key: string]: Array<string> | undefined;
 }
 
 

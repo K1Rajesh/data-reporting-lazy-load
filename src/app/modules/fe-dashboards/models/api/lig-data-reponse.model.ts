@@ -1,11 +1,18 @@
+import {ApiResponseIModel} from './api-reponse.model'
+
+
 export type LigDataResponseIModel = {
     "aggregatedData"?: AggregateDataIModel,
     "data"?: Array<DataIModel>,
     "filters"?: FilterIModel,
     "recordCount"?:number,
-    "success"?: boolean,
+    "success": boolean,
     "errorMessage"?:string,
     "provideData": boolean
+}
+export interface LigDataApiResponseIModel extends  ApiResponseIModel{
+    data : LigDataResponseIModel | undefined
+
 }
 
 export type  AggregateDataIModel =  {
@@ -26,6 +33,7 @@ export type  FilterIModel =  {
     "user_persona": Array<string>,
     "month":Array<string>,
     "FinancialYear":Array<string>
+    [key: string]: Array<string> ;
 }
 
 export interface DataIModel    {
