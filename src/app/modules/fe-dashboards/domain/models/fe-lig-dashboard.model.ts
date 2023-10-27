@@ -1,13 +1,10 @@
 import { Injectable } from "@angular/core";
 
-import { Observable , Subscription} from 'rxjs';
+import { Subscription} from 'rxjs';
 
-import { FELigDataService } from '../../services/fe-lig-data.service';
 import { LigDataModel} from "../../domain/models/lig-data.model";
 
-
-import { LigDataRequestIModel,LigDataFilterIModel,UserIModel } from '../../models/api/lig-data-request.model';
-import { LigDataResponseIModel } from '../../models/api/lig-data-reponse.model';
+import { LigDataApiResponseIModel } from '../../models/api/lig-data-reponse.model';
 import  { LigDashboardDataModel, LigDashboardTableViewHeaders } from '../../models/lig-dashboard-data.model'
 
 @Injectable()
@@ -61,10 +58,14 @@ export class FELigDashboardModel {
 
       this.subsList.push(
         this.ligDataModel.getLigDataResponse()
-        .subscribe((ligDataResponse:LigDataResponseIModel | undefined)=>{
-            if(ligDataResponse?.success && ligDataResponse?.provideData && ligDataResponse?.data){
+        .subscribe((ligDataResponse:LigDataApiResponseIModel | undefined)=>{
+            if(
+              (!ligDataResponse?.isLoading && ligDataResponse?.isSuccess) && 
+              ligDataResponse?.data?.provideData && 
+              ligDataResponse?.data?.data
+            ){
               //this.isDataLoading = false;
-              this.initDataSource(ligDataResponse.data)
+              this.initDataSource(ligDataResponse.data.data)
             }
           },
           (error)=>{

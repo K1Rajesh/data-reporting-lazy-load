@@ -8,13 +8,12 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 import { LigDataModel } from "./lig-data.model";
 
-import { FilterIModel, LigDataResponseIModel } from './../../models/api/lig-data-reponse.model';
+import { FilterIModel, LigDataApiResponseIModel } from './../../models/api/lig-data-reponse.model';
 import { FiterControlIModel } from "../../models/lig-dashboard-filter.model";
-import { FilterIModel3 } from "../../models/lig-dashboard-filter.model"
 
-import { LigFormFilterControlService } from '../../services/lig-form-filter-controls.service'
 import { LigFormFilterControlService3} from '../../services/lig-form-filter-controls-3.service'
 
+import { FiltersAvailable } from './available-filters.model'
 
 import { CONST_VALUES } from "../../../../core/constant-reources";
 
@@ -24,23 +23,10 @@ export class FELigDashboardFilterModel {
     private subsList : Array<Subscription> = new Array<Subscription>();
 
     public filtersUniqueValues : any;
-    public filtersAvailable : Array<string> = [
-      'FinancialYear',
-      'month',
-      'sap_cc_number',
-      'user_persona',
-      'SALES_GROUP_NAME' ,
-      'SALES_OFFICE_NAME',
-      'taluka',
-      'district',
-      'state',
-      'PRODUCT_CODE',
-      'PRODUCT_NAME',
-      'PRODUCT_BRAND',
-    ]
+    public filtersAvailable : Array<string> = FiltersAvailable;
     public filterFormControls : Map<string , FiterControlIModel> = new Map<string , FiterControlIModel>();
 
-    public isShowFilter: boolean = true;
+    public isShowFilter: boolean = false;
     public dynamicLoader:string | undefined = undefined;
     public KIBANA_DASHBOARD = CONST_VALUES.DYNAMIC_LOADER_ID.KIBANA_DASHBOARD
     public isKibanaLayout:boolean = false;
@@ -82,10 +68,14 @@ export class FELigDashboardFilterModel {
       this.subsList.push(
           this.ligDataModel.getLigFilterResponse()
           .subscribe(
-            (ligData : LigDataResponseIModel | undefined) =>{
-              if(ligData && ligData.success && !ligData.provideData && ligData.filters){
+            (ligDataResponse : LigDataApiResponseIModel | undefined) =>{
+              if(
+                (!ligDataResponse?.isLoading && ligDataResponse?.isSuccess) && 
+                !ligDataResponse?.data?.provideData && 
+                ligDataResponse?.data?.filters
+                ){
                  // When Lig Data API call, update the Filter values in Form control
-                  this.setFormControlFilterValues(ligData.filters)
+                  this.setFormControlFilterValues(ligDataResponse.data.filters)
 
               }
             }, 
@@ -145,11 +135,11 @@ export class FELigDashboardFilterModel {
       this.filtersAvailable.forEach((filter)=>{
         if(
           //the filterkey exists on form and it does not have any values selected, then update the from controls all options 
-          this.filterFormControls.get(filter) &&
-          (
-            !this.filterFormControls.get(filter)?.filtersOptionsSelected ||
-            this.filterFormControls.get(filter)?.filtersOptionsSelected?.length === 0
-          )
+          this.filterFormControls.get(filter) //&&
+          // (
+          //   !this.filterFormControls.get(filter)?.filtersOptionsSelected ||
+          //   this.filterFormControls.get(filter)?.filtersOptionsSelected?.length === 0
+          // )
         ){
           const tempfilterFormControl = this.filterFormControls.get(filter);
           if(tempfilterFormControl){
@@ -167,6 +157,7 @@ export class FELigDashboardFilterModel {
 
       // initial call api and get data with these intial filters
       this.ligDataModel.initLigFilterCall(false);
+      this.ligDataModel.initLigDataCall(true);
     }
 
     public subscribeFilterControlValueChanges():void{
@@ -233,7 +224,8 @@ export class FELigDashboardFilterModel {
 
     }
     public applyFilterClickHandler(){
-      this.ligDataModel.initLigDataCall(true)
+      this.isShowFilter = false;
+      this.ligDataModel.initLigDataCall(true);
   
     }
     public destroy():void{

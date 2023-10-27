@@ -6,15 +6,14 @@ import { LigFormFilterControlService3} from '../../../fe-dashboards/services/lig
 
 
 import {FEDashboardContainerModel} from '../../../fe-dashboards/domain/models/fe-dashboard-container.model'
-import {LigDashboardModel3} from '../../../fe-dashboards/domain/models/lig-dashboard3.model'
+//import {LigDashboardModel3} from '../../../fe-dashboards/domain/models/lig-dashboard3.model'
 import { LigDataModel } from '../../../fe-dashboards/domain/models/lig-data.model';
 
 @Component({
   selector: 'app-lig-container',
   templateUrl: './lig-container.component.html',
   styleUrls: ['./lig-container.component.css'],
-  providers:[  FEDashboardContainerModel,
-     LigDashboardModel3, LigFormFilterControlService3, LigDataModel ] //LigFormFilterControlService, LigFormFilterControlService2
+  providers:[  FEDashboardContainerModel, LigFormFilterControlService3, LigDataModel ] //LigDashboardModel3,LigFormFilterControlService, LigFormFilterControlService2
 })
 export class LigContainerComponent implements OnInit {
 

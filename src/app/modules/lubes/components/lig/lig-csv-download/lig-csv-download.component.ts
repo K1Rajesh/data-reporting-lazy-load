@@ -2,12 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable, pipe } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { LigCsvDownloadService } from './../../../services/lig-csv-download.service';
+import { LigCsvDownloadService } from '../../../../fe-dashboards-features-shared/services/lig-csv-download.service';
 
 import { LigDataResponseModel } from '../../../models/api/lig-data-response.model';
-import { LigDashboardTableApiHeaders, LigDashboardTableHeadersApiMapping } from '../../../models/lig-dashboard-data.model';
+import { LigDashboardTableApiHeaders, LigDashboardTableHeadersApiMapping } from '../../../../fe-dashboards-features-shared/models/lig-dashboard-data.model';
 
-import {LigDataResponseIModel} from "../../../../fe-dashboards/models/api/lig-data-reponse.model";
+import {LigDataApiResponseIModel} from "../../../../fe-dashboards/models/api/lig-data-reponse.model";
 
 import { LigDataModel} from "../../../../fe-dashboards/domain/models/lig-data.model";
 
@@ -49,10 +49,19 @@ export class LigCsvDownloadComponent implements OnInit, OnDestroy {
 
     this.subsList.push(
       this.ligDataModel.getLigDataResponse()
-      .subscribe((ligDataResponse:LigDataResponseIModel | undefined)=>{
-          if(ligDataResponse?.success && ligDataResponse?.provideData && ligDataResponse?.data){
+      .subscribe(
+        (ligDataResponse:LigDataApiResponseIModel | undefined)=>{
+        if(ligDataResponse?.isLoading){
+          this.isDataLoading = true;
+        }
+        else if(
+          (!ligDataResponse?.isLoading && ligDataResponse?.isSuccess) && 
+          ligDataResponse?.data?.provideData && 
+          ligDataResponse?.data?.data
+        )
+          {
             this.isDataLoading = false;
-            this.ligCsvDownloadService.downloadFile(ligDataResponse.data, this.csvDownloadHeaders, LigDashboardTableHeadersApiMapping );
+            this.ligCsvDownloadService.downloadFile(ligDataResponse.data.data, this.csvDownloadHeaders, LigDashboardTableHeadersApiMapping );
           }
         },
         (error)=>{

@@ -7,34 +7,20 @@ import { LigFormFilterControlService3 } from '../../services/lig-form-filter-con
 
 
 import { UserIModel,LigDataRequestIModel, LigDataFilterIModel } from '../../models/api/lig-data-request.model';
-import { LigDataResponseIModel } from '../../models/api/lig-data-reponse.model';
+import { LigDataResponseIModel, LigDataApiResponseIModel } from '../../models/api/lig-data-reponse.model';
 
 import { UserDetailsModel } from '../../../authorized-user/domain/models/user-details.model';
 
-import { UserDetailsIModel } from '../../../features-shared/domain/models/user-details.model';
+import { FiltersAvailable } from './available-filters.model'
 
 @Injectable()
 export class LigDataModel{
-    private ligFilterResponseBehaviorSubject: BehaviorSubject<LigDataResponseIModel | undefined> = new BehaviorSubject<LigDataResponseIModel | undefined>(undefined);
-    private ligDataResponseBehaviorSubject: BehaviorSubject<LigDataResponseIModel | undefined> = new BehaviorSubject<LigDataResponseIModel | undefined>(undefined) ;
-    // public ligFilterResponse$: Observable<LigDataResponseIModel | undefined>;
-    // public ligDataResponse$: Observable<LigDataResponseIModel | undefined>;
+    private ligFilterResponseBehaviorSubject: BehaviorSubject<LigDataApiResponseIModel | undefined> = new BehaviorSubject<LigDataApiResponseIModel | undefined>(undefined);
+    private ligDataResponseBehaviorSubject: BehaviorSubject<LigDataApiResponseIModel | undefined> = new BehaviorSubject<LigDataApiResponseIModel | undefined>(undefined) ;
+
     private subsList : Array<Subscription> = new  Array<Subscription>();
     private emailId: string | undefined;
-    public filtersAvailable : Array<string> = [
-        'FinancialYear',
-        'month',
-        'sap_cc_number',
-        'user_persona',
-        'SALES_GROUP_NAME' ,
-        'SALES_OFFICE_NAME',
-        'taluka',
-        'district',
-        'state',
-        'PRODUCT_CODE',
-        'PRODUCT_NAME',
-        'PRODUCT_BRAND',
-    ]
+    public filtersAvailable : Array<string> = FiltersAvailable;
     private filters:LigDataFilterIModel={month:[], FinancialYear:[]};
     private payload:LigDataRequestIModel;
     private payLoadEle$: Array<Observable<string[] | undefined>> = new Array<Observable<string[] | undefined>>();
@@ -70,14 +56,24 @@ export class LigDataModel{
         
                 }
                 if(this.validLigDataCall()){
-                    this.ligFilterResponseBehaviorSubject.next(undefined)
+
+                    const tempLigApiResponse : LigDataApiResponseIModel = { data : undefined , isLoading: true, isSuccess:false  }
+                    this.ligFilterResponseBehaviorSubject.next(tempLigApiResponse)
+
                     this.feLigDataService.getLigData(payload)
                     .subscribe(
                         (response:LigDataResponseIModel)=>{
-                            this.ligFilterResponseBehaviorSubject.next(response)
+                            const tempLigApiResponse : LigDataApiResponseIModel = { data : response , isLoading: false, isSuccess:response.success  }
+                            this.ligFilterResponseBehaviorSubject.next(tempLigApiResponse)
                         },
                         (error:any) => {
-                            this.ligFilterResponseBehaviorSubject.error(error)
+                            const tempLigApiResponse : LigDataApiResponseIModel = { 
+                                data : undefined, 
+                                isLoading: false, 
+                                isSuccess:false , 
+                                errorMessage:error
+                            }
+                            this.ligFilterResponseBehaviorSubject.error(tempLigApiResponse)
                         },
                         ()=>{
                             //this.ligFilterResponseBehaviorSubject.complete()   
@@ -109,13 +105,23 @@ export class LigDataModel{
         
                 }
                 if(this.validLigDataCall()){
+                    const tempLigApiResponse : LigDataApiResponseIModel = { data : undefined , isLoading: true, isSuccess:false  }
+                    this.ligDataResponseBehaviorSubject.next(tempLigApiResponse)
+
                     this.feLigDataService.getLigData(payload)
                     .subscribe(
                         (response:LigDataResponseIModel)=>{
-                            this.ligDataResponseBehaviorSubject.next(response)
+                            const tempLigApiResponse : LigDataApiResponseIModel = { data : response , isLoading: false, isSuccess:response.success  }
+                            this.ligDataResponseBehaviorSubject.next(tempLigApiResponse)
                         },
                         (error:any) => {
-                            this.ligDataResponseBehaviorSubject.error(error)
+                            const tempLigApiResponse : LigDataApiResponseIModel = { 
+                                data : undefined, 
+                                isLoading: false, 
+                                isSuccess:false , 
+                                errorMessage:error
+                            }
+                            this.ligDataResponseBehaviorSubject.error(tempLigApiResponse)
                         },
                         ()=>{
                             //this.ligDataResponseBehaviorSubject.complete()   
@@ -125,16 +131,18 @@ export class LigDataModel{
             }
         })
     }
-    public getLigFilterResponse(): Observable<LigDataResponseIModel | undefined>{
+    public getLigFilterResponse(): Observable<LigDataApiResponseIModel | undefined>{
         return this.ligFilterResponseBehaviorSubject.asObservable()
     }
-    public getLigDataResponse():Observable<LigDataResponseIModel | undefined>{
+    public getLigDataResponse():Observable<LigDataApiResponseIModel | undefined>{
         return this.ligDataResponseBehaviorSubject.asObservable()
     }
     private getUser():UserIModel{
         //(temp dummyUser)
         return  {
-            "email":  "z_act_dev3@corp.bharatpetroleum.com"//"abhisekdatta@corp.bharatpetroleum.com" , // "sonawaneug@corp.bharatpetroleum.com",
+            "email":  "arushjain@corp.bharatpetroleum.com"
+            //murarijha - mumbai,  anushigupta - all, ashutoshpandy, arushjain
+            //"abhisekdatta - bhubaneswar , kastalasaisiddh -SEC , sonawaneug@corp.bharatpetroleum.com",
         }; 
         // return {
         //     "email": this.emailId!
