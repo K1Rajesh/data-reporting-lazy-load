@@ -41,6 +41,22 @@ export interface  FilterIModel2  {
     [key: string]: Array<string> | undefined ;
 }
 
+export interface  FilterIModel3  {
+    "SALES_GROUP_NAME"?: XFilterIModel,
+    "SALES_OFFICE_NAME"?: XFilterIModel,
+    "sap_cc_number"?: XFilterIModel,
+    "district"?: XFilterIModel,
+    "PRODUCT_BRAND"?: XFilterIModel,
+    "PRODUCT_CODE"?: XFilterIModel,
+    "PRODUCT_NAME"?: XFilterIModel,
+    "state"?: XFilterIModel,
+    "taluka"?: XFilterIModel,
+    "user_persona"?: XFilterIModel,
+    "month":XFilterIModel,
+    "FinancialYear":XFilterIModel
+    [key: string]: XFilterIModel | undefined ;
+}
+
 export interface  FilterIModel4  {
     "SALES_GROUP_NAME": BehaviorSubject<string | undefined>,
     "SALES_OFFICE_NAME": BehaviorSubject<string | undefined>,
@@ -57,20 +73,20 @@ export interface  FilterIModel4  {
     [key: string]: BehaviorSubject<string |  undefined> ;
 }
 
-export interface  FilterIModel3  {
-    "SALES_GROUP_NAME"?: XFilterIModel,
-    "SALES_OFFICE_NAME"?: XFilterIModel,
-    "sap_cc_number"?: XFilterIModel,
-    "district"?: XFilterIModel,
-    "PRODUCT_BRAND"?: XFilterIModel,
-    "PRODUCT_CODE"?: XFilterIModel,
-    "PRODUCT_NAME"?: XFilterIModel,
-    "state"?: XFilterIModel,
-    "taluka"?: XFilterIModel,
-    "user_persona"?: XFilterIModel,
-    "month":XFilterIModel,
-    "FinancialYear":XFilterIModel
-    [key: string]: XFilterIModel | undefined ;
+export interface FilterIModel5 {
+    "SALES_GROUP_NAME"?: string | undefined,
+    "SALES_OFFICE_NAME"?: string | undefined,
+    "sap_cc_number"?: string | undefined,
+    "district"?: string | undefined,
+    "PRODUCT_BRAND"?: string | undefined,
+    "PRODUCT_CODE"?: string | undefined,
+    "PRODUCT_NAME"?: string | undefined,
+    "state"?: string | undefined,
+    "taluka"?: string | undefined,
+    "user_persona"?: string | undefined,
+    "month":string | undefined,
+    "FinancialYear":string | undefined,
+    [key: string]: string |  undefined;   
 }
 
 export interface XFilterIModel{
