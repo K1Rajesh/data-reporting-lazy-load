@@ -4,6 +4,7 @@ import { FiltersAvailable } from '../../../fe-dashboards/domain/models/available
 import { FilterIModel5 } from '../../../fe-dashboards/models/lig-dashboard-filter.model'
 
 import { LigFormFilterControlService3 } from '../../../fe-dashboards/services/lig-form-filter-controls-3.service';
+import { LigDataModel } from '../../../fe-dashboards/domain/models/lig-data.model';
 
 @Injectable()
 export class SelectedFiltersDisplayModel{
@@ -22,7 +23,8 @@ export class SelectedFiltersDisplayModel{
       "FinancialYear":undefined
     };
     private filtersAvailable : Array<string> = FiltersAvailable;
-    constructor(private ligFormFilterControlService3  : LigFormFilterControlService3){}
+    constructor(private ligFormFilterControlService3  : LigFormFilterControlService3,
+      private ligDataModel : LigDataModel){}
     init(){
         this.subscribeSelectedFilters();
     }
@@ -32,16 +34,17 @@ export class SelectedFiltersDisplayModel{
             if(filterList){
               this.selectedFilters[filter] = filterList.join();
             }
+            else{
+              this.selectedFilters[filter] = undefined
+            }
 
           })
-          this.ligFormFilterControlService3?.selectedFilters[filter]?.removedValue?.subscribe((filterValue)=>{
-            //this.updateFiltersOptionsSelected(this.filterFormControls,"remove",filter,filterValue);
-          })
-          this.ligFormFilterControlService3?.selectedFilters[filter]?.addedValue?.subscribe((filterValue)=>{
-           // this.updateFiltersOptionsSelected(this.filterFormControls,"add",filter,filterValue);
-          })
         })
-      }
+    }
+    public euiBadgeClickHandler(filterKey:string):void{
+      this.ligFormFilterControlService3.deleteSelectedFilter(filterKey);
+      this.ligDataModel.initLigDataCall(true)
+    }
     destroy(){
 
     }

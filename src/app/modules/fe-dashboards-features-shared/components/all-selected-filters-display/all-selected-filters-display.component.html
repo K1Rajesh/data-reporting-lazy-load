@@ -1,7 +1,7 @@
 <div class="selected-filters-container">
     <ng-container *ngFor="let item of selectedFilters | keyvalue">
         <ng-container *ngIf="item.value?.trim()">
-            <app-eui-badge  [displayName]="item.key +':'+ item.value"></app-eui-badge>
+            <app-eui-badge (click)="euiBadgeClickHandler(item.key)"  [displayName]="item.key +':'+ item.value"></app-eui-badge>
         </ng-container>     
     </ng-container>
 </div>
