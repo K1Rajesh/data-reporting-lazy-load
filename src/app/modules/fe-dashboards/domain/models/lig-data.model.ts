@@ -6,8 +6,9 @@ import { FELigDataService } from './../../services/fe-lig-data.service';
 import { LigFormFilterControlService3 } from '../../services/lig-form-filter-controls-3.service';
 
 
-import { UserIModel,LigDataRequestIModel, LigDataFilterIModel } from '../../models/api/lig-data-request.model';
+import { UserIModel, LigDataFilterIModel } from '../../models/api/lig-data-request.model';
 import { LigDataResponseIModel, LigDataApiResponseIModel } from '../../models/api/lig-data-reponse.model';
+import { FilterIModel2 } from '../../models/lig-dashboard-filter.model';
 
 import { UserDetailsModel } from '../../../authorized-user/domain/models/user-details.model';
 
@@ -17,12 +18,12 @@ import { FiltersAvailable } from './available-filters.model'
 export class LigDataModel{
     private ligFilterResponseBehaviorSubject: BehaviorSubject<LigDataApiResponseIModel | undefined> = new BehaviorSubject<LigDataApiResponseIModel | undefined>(undefined);
     private ligDataResponseBehaviorSubject: BehaviorSubject<LigDataApiResponseIModel | undefined> = new BehaviorSubject<LigDataApiResponseIModel | undefined>(undefined) ;
+    private appliedFilterOnInitLigDataCall: BehaviorSubject<FilterIModel2 | undefined> = new BehaviorSubject<FilterIModel2 | undefined>(undefined) ;
 
     private subsList : Array<Subscription> = new  Array<Subscription>();
     private emailId: string | undefined;
     public filtersAvailable : Array<string> = FiltersAvailable;
     private filters:LigDataFilterIModel={month:[], FinancialYear:[]};
-    private payload:LigDataRequestIModel;
     private payLoadEle$: Array<Observable<string[] | undefined>> = new Array<Observable<string[] | undefined>>();
 
     constructor(private feLigDataService: FELigDataService,
@@ -105,6 +106,7 @@ export class LigDataModel{
         
                 }
                 if(this.validLigDataCall()){
+                    this.appliedFilterOnInitLigDataCall.next(this.filters);
                     const tempLigApiResponse : LigDataApiResponseIModel = { data : undefined , isLoading: true, isSuccess:false  }
                     this.ligDataResponseBehaviorSubject.next(tempLigApiResponse)
 
@@ -137,12 +139,16 @@ export class LigDataModel{
     public getLigDataResponse():Observable<LigDataApiResponseIModel | undefined>{
         return this.ligDataResponseBehaviorSubject.asObservable()
     }
+    public getAppliedFilterOnInitLigDataCall():Observable<FilterIModel2 | undefined> {
+        return this.appliedFilterOnInitLigDataCall.asObservable();
+    }
+
     private getUser():UserIModel{
         //(temp dummyUser)
-        return  {
-            "email":  "arushjain@corp.bharatpetroleum.com"
             //murarijha - mumbai,  anushigupta - all, ashutoshpandy, arushjain
             //"abhisekdatta - bhubaneswar , kastalasaisiddh -SEC , sonawaneug@corp.bharatpetroleum.com",
+        return  {
+            "email":  "sonawaneug@corp.bharatpetroleum.com"
         }; 
         // return {
         //     "email": this.emailId!
