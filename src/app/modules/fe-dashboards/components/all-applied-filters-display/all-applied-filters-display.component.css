@@ -1,0 +1,4 @@
+.selected-filters-container{
+    display: flex;
+    gap:2px;
+}

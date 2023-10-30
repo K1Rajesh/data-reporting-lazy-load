@@ -2,10 +2,18 @@
     height: 100%;
     padding: 20px;
     overflow: auto;
+    position: relative;
 }
 .header-container{
     display: flex;
 }
 .csv-donmolad-component-container{
     margin-left: auto;
+}
+.fe-dashboar-loader{
+    background-color: rgba(0, 0, 0, 0.50);
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1;
 }

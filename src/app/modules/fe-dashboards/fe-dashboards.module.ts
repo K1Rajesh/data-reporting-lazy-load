@@ -9,6 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FELigDashboardComponent } from './components/fe-lig-dashboard/fe-lig-dashboard.component';
 import { LigHeaderPipe } from './components/fe-lig-dashboard/lig-header.pipe';
 import { FELigDashboardFilterComponent } from './components/fe-lig-dashboard-filter/fe-lig-dashboard-filter.component';
+import { AllAppliedFiltersDisplayComponent } from './components/all-applied-filters-display/all-applied-filters-display.component'
 
 import { FEDashBoardsRoutingModule} from './fe-dashboards-routing.module';
 
@@ -26,7 +27,8 @@ import { FEDashboardContainerComponent } from './components/fe-dashboard-contain
     FELigDashboardComponent,
     LigHeaderPipe,
     FELigDashboardFilterComponent,
-    FEDashboardContainerComponent
+    FEDashboardContainerComponent,
+    AllAppliedFiltersDisplayComponent
   ],
   imports: [
     CommonModule,
