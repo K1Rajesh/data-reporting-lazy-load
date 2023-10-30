@@ -2,7 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 
 import { SelectedFiltersDisplayModel } from './../../domain/models/selected-filters-display.model';
 
-import { FilterIModel5 } from '../../../fe-dashboards/models/lig-dashboard-filter.model'
+import { ConcatedFiltersIModel } from '../../../fe-dashboards/models/lig-dashboard-filter.model'
 
 
 @Component({
@@ -13,7 +13,7 @@ import { FilterIModel5 } from '../../../fe-dashboards/models/lig-dashboard-filte
 })
 export class AllSelectedFiltersDisplayComponent implements OnInit {
  
-  get selectedFilters():FilterIModel5 {
+  get selectedFilters():ConcatedFiltersIModel {
     return this.model.selectedFilters
   }
   constructor(private model : SelectedFiltersDisplayModel) { }
