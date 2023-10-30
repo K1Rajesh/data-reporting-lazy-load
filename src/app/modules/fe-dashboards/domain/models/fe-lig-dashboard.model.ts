@@ -24,35 +24,13 @@ export class FELigDashboardModel {
     public isShowTableLoader: boolean = false;
     public filters: any;
 
-    //public ligDataServiceLigData$ : Observable<LigDataResponseIModel | undefined>;
-    // get ligDataServiceLigData$() {
-    //   return this.ligDataModel.ligDataResponse$;
-    // } 
-    
 
     constructor(private ligDataModel : LigDataModel ) {
         this.headerColumns  = LigDashboardTableViewHeaders
     }
     init(){
-      //this.ligDataServiceLigData$ = this.ligDataModel.ligDataResponse$;
       this.subscribeGetLigDataCall();
     }
-    // public getSourceDataclickHandler(): void {
-    //     this.initateGetLigDataCall({"month": ["2023-08"],'FinancialYear':['2023-2024']},true);
-    // }
-
-    // public initateGetLigDataCall(filters:LigDataFilterIModel, provideData : boolean, user?: UserIModel ){
-    //   const dummyUser = {
-    //     "email": "abhisekdatta@corp.bharatpetroleum.com" , // "sonawaneug@corp.bharatpetroleum.com",
-    //   };
-    //   const payLoad:LigDataRequestIModel = {
-    //     "user": user ? user : dummyUser,
-    //     filters: filters,
-    //     "provideData":provideData
-    //   }
-    //   this.ligDataServiceLigData$ = this.ligDataService.getLigData(payLoad);
-    //   this.subscribeGetLigDataCall();
-    // }
 
     private subscribeGetLigDataCall(){
 
@@ -72,22 +50,7 @@ export class FELigDashboardModel {
             //this.isDataLoading = false;
           }
         )
-      )
-        // this.subsList.push(
-        //     this.ligDataServiceLigData$!
-        //     .subscribe(
-        //       (ligData : LigDataResponseIModel ) =>{
-        //         if(ligData && ligData.success ){
-        //           if( ligData.provideData && ligData.data){
-        //             //console.log(ligData);
-        //             this.initDataSource(ligData.data)
-        //           }       
-
-        //         }
-        //       }, 
-        //       (err:any) =>{console.log("getLigData API Error: ",err)} 
-        //     )
-        //   )    
+      )   
     }
     public initDataSource(ligData : Array<LigDashboardDataModel>){
         this.ligDataSource = ligData

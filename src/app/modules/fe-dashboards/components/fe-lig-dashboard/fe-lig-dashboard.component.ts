@@ -8,8 +8,7 @@ import { FELigDashboardModel } from '../../domain/models/fe-lig-dashboard.model'
 @Component({
   selector: 'app-lig-dashboard',
   templateUrl: './fe-lig-dashboard.component.html',
-  styleUrls: ['./fe-lig-dashboard.component.css'],
-  providers: []
+  styleUrls: ['./fe-lig-dashboard.component.css']
 })
 export class FELigDashboardComponent implements OnInit , OnDestroy {
 
@@ -40,9 +39,6 @@ export class FELigDashboardComponent implements OnInit , OnDestroy {
   ngOnInit(): void {
     this.ligDashboardModel.init();
   }
-  // public getSourceDataclickHandler(): void {
-  //   this.ligDashboardModel.getSourceDataclickHandler();
-  // }
 
   public pageSelectHandler(pageSelectedNumberVal:string | number):void{
     this.ligDashboardModel.pageSelectHandler(pageSelectedNumberVal)
