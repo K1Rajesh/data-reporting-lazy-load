@@ -27,7 +27,8 @@ export class FELigDataService{
     public getLigData(payLoad?:LigDataRequestIModel):Observable<LigDataResponseIModel>{
 
         const dummyPayLoad  = SAMPLE_LIG_DATA_REQUEST
-        return this.httpClient.post<any>("http://10.29.2.4:8001/pukipy/lig_data222", payLoad )
+        const ligDataUrl  = environment.pukipy + "lig_data222"
+        return this.httpClient.post<any>( ligDataUrl, payLoad )
     }
 
 
