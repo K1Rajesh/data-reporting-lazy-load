@@ -73,7 +73,7 @@ export interface  FilterIModel4  {
     [key: string]: BehaviorSubject<string |  undefined> ;
 }
 
-export interface FilterIModel5 {
+export interface ConcatedFiltersIModel {
     "SALES_GROUP_NAME"?: string | undefined,
     "SALES_OFFICE_NAME"?: string | undefined,
     "sap_cc_number"?: string | undefined,
