@@ -8,7 +8,8 @@
     </div>
 
     <div>
-        <app-all-selected-filters-display></app-all-selected-filters-display>
+        <!-- <app-all-selected-filters-display></app-all-selected-filters-display> -->
+        <app-all-applied-filters-display></app-all-applied-filters-display>
     </div>
 
     <div>
@@ -19,6 +20,11 @@
     <div>
         <app-lig-dashboard></app-lig-dashboard>
     </div>
+    <div *ngIf="isShowTableLoader">
+        <app-page-loader-ui></app-page-loader-ui>  
+    </div>
+    
+
 
 
 </div>

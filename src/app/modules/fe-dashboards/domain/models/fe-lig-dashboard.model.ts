@@ -57,6 +57,7 @@ export class FELigDashboardModel {
 
         //pagination
         this.paginationMaxIndex = this.noOfRowPerPage ? Math.floor(ligData.length / this.noOfRowPerPage) : 1;
+        this.paginationMaxIndex = this.paginationMaxIndex < 1 ? 1 : this.paginationMaxIndex;
         this.setPageNumberList()
         this.setSnippetPageNumberList();
         this.setCurrentPageDataSource();
@@ -69,9 +70,16 @@ export class FELigDashboardModel {
         
     }
     public setSnippetPageNumberList():void{
-        if(this.currentPageNumber && this.currentPageNumber < 5){
+        if(this.currentPageNumber && this.currentPageNumber < 5 && this.paginationMaxIndex > 5){
           this.snippetPageNumberList = [2,3,4,5,'...'];
-        }else if(this.currentPageNumber >=5 && this.currentPageNumber < this.paginationMaxIndex - 5){
+        }
+        else if(this.currentPageNumber && this.currentPageNumber < 5 && this.paginationMaxIndex == 1){
+          this.snippetPageNumberList = []
+        }
+        else if(this.currentPageNumber && this.currentPageNumber < 5 &&  this.paginationMaxIndex > 1 && this.paginationMaxIndex < 5){
+          this.snippetPageNumberList = Array.from({length: this.paginationMaxIndex}, (_, i) => i + 1)
+        }
+        else if(this.currentPageNumber >=5 && this.currentPageNumber < this.paginationMaxIndex - 5){
           this.snippetPageNumberList = ['..',this.currentPageNumber-2,this.currentPageNumber-1,
           this.currentPageNumber,this.currentPageNumber+1,this.currentPageNumber+2,'..']
         }

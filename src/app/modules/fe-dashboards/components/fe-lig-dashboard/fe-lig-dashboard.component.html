@@ -31,8 +31,10 @@
     </div>
     <div class="pagination-container pager-2">
       <div class="pagination-number-container">
+
         <div class="pagination-number" *ngIf="(currentPageNumber > paginationMinIndex)"
         (click)="pageSelectHandler('previous_page')"> &lt;&lt;</div>
+
         <div class="pagination-number"
         [ngClass]="{ 'active' : paginationMinIndex===currentPageNumber }"
         (click)="pageSelectHandler(paginationMinIndex)">{{paginationMinIndex}}</div>
@@ -44,8 +46,10 @@
         
         <div class="pagination-number active"
         [ngClass]="{ 'active' : paginationMaxIndex===currentPageNumber }"
+        *ngIf="(paginationMaxIndex > 1)"
         (click)="pageSelectHandler(paginationMaxIndex)">{{paginationMaxIndex}}</div>
-        <div class="pagination-number" *ngIf="(currentPageNumber < paginationMaxIndex)"
+
+        <div class="pagination-number" *ngIf="((currentPageNumber < paginationMaxIndex) && (paginationMaxIndex > 1))"
         (click)="pageSelectHandler('next_page')"> &gt;&gt;</div>
 
         <!-- <div class="pagination-number" *ngFor="let pageNumber of pageNumberList"
